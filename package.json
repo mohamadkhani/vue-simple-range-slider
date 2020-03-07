@@ -1,26 +1,26 @@
 {
   "name": "vue-simple-range-slider",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.1.2",
+  "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "build-bundle": "vue-cli-service build --target lib --name vueSimpleRangeSlider ./src/lib.ts",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint"
   },
-  "dependencies": {
+  "devDependencies": {
     "core-js": "^3.6.4",
+    "fsevents": "^2.1.2",
     "vue": "^2.6.11",
     "vue-class-component": "^7.2.2",
-    "vue-property-decorator": "^8.3.0"
-  },
-  "devDependencies": {
+    "vue-property-decorator": "^8.3.0",
     "@types/chai": "^4.2.8",
     "@types/mocha": "^5.2.4",
     "@typescript-eslint/eslint-plugin": "^2.18.0",
     "@typescript-eslint/parser": "^2.18.0",
-    "@vue/cli-plugin-babel": "~4.2.0",
+    "@vue/cli-plugin-babel": "~4.2.3",
     "@vue/cli-plugin-e2e-cypress": "~4.2.0",
     "@vue/cli-plugin-eslint": "~4.2.0",
     "@vue/cli-plugin-typescript": "~4.2.0",
@@ -35,5 +35,13 @@
     "sass-loader": "^8.0.2",
     "typescript": "~3.7.5",
     "vue-template-compiler": "^2.6.11"
-  }
+  },
+  "main": "dist/vueSimpleRangeSlider.common.js",
+  "files": [
+    "dist/*",
+    "src/*",
+    "public/*",
+    "*.json",
+    "*.js"
+  ]
 }

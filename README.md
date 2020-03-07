@@ -1,34 +1,65 @@
 # vue-simple-range-slider
+Change Your numeric value or numeric range value with dragging handles
 
-## Project setup
-```
-npm install
-```
+## Features
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+* Single value and range slider support
+* Logarithmic and linear scale support
+* Keyboard support
+* rtl support
 
-### Compiles and minifies for production
-```
-npm run build
-```
+_Requires Vue 2.2+_
 
-### Run your unit tests
+## Getting Started
 ```
-npm run test:unit
+npm install vue-simple-range-slider
 ```
-
-### Run your end-to-end tests
+Or
 ```
-npm run test:e2e
+yard add vue-simple-range-slider
 ```
 
-### Lints and fixes files
+### Example
 ```
-npm run lint
+<template>
+  <div>
+    <VueSimpleRangeSlider
+                    style="width: 300px"
+                    :min="0"
+                    :max="1000000"
+                    :logarithmic="true"
+                    v-model="range"
+            />
+    <VueSimpleRangeSlider
+                    style="width: 300px"
+                    :min="0"
+                    :max="20"
+                    v-model="number"
+            />
+  </div>
+</template>
+<script>
+import VueSimpleRangeSlider from 'vue-simple-range-slider';
+import 'vue-simple-range-slider/dist/vueSimpleRangeSlider.css'
+export default {
+    // register the component
+    components: { VueSimpleRangeSlider },
+    data() {
+          return {
+               range: [20,1000],
+               number: 10
+          }
+    }
+}
+</script>
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+    
+##Props
+|Name           |Type|Default|
+|---            |---|---|
+|value          |```number``` Or ```[number,number]```||
+|min            |```number```                         |```0```   |
+|max            |```number```                         |```100``` |
+|logarithmic    |```boolean```                        |```false```|
+|barColor       |```string```                         |```#bebebe```|
+|activeBarColor |```string```                         |```#6699ff```|
