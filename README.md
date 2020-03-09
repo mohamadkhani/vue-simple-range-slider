@@ -54,7 +54,7 @@ export default {
 </script>
 ```
     
-##Props
+###Props
 |Name           |Type|Default|
 |---            |---|---|
 |value          |```number``` Or ```[number,number]```||
