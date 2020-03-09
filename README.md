@@ -1,6 +1,9 @@
 # vue-simple-range-slider
 Change Your numeric value or numeric range value with dragging handles
 
+[Demo](https://codesandbox.io/s/vue-simple-range-slider-example-b2ovr)
+
+
 ## Features
 
 * Single value and range slider support

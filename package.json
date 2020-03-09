@@ -3,6 +3,7 @@
   "description": "Change Your numeric value or numeric range value with dragging handles",
   "version": "0.1.0",
   "private": false,
+  "keywords": ["vue","range-slider","numeric-picker","range-picker","numeric-range-picker","numeric-range","input-element","range-input"],
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
