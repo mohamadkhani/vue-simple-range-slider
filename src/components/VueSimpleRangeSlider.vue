@@ -473,12 +473,12 @@
             const scale = valueRange / this.width;
             let num = Math.floor(Math.exp(scale * pos));// Math.ceil((Math.pow(pos / this.width, base) + 1 ) * valueRange);
             if (num - 1 !== 0) {
-                const r10 = Math.pow(10, Math.floor(Math.log10(num - 1)));
+                const r10 = Math.pow(10, Math.floor(Math.log10(num - 1 + this.minAnchorValue)));
                 num = Math.floor(num / r10) * r10;
             } else {
-                num--;
+                num = num - 1 + this.minAnchorValue;
             }
-            return num + this.minAnchorValue;
+            return num;
         }
 
         unLog(num: number) {
