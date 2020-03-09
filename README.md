@@ -23,7 +23,7 @@ yard add vue-simple-range-slider
 ```
 
 ### Example
-```
+```html
 <template>
   <div>
     <VueSimpleRangeSlider
