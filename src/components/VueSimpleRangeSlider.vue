@@ -12,13 +12,31 @@
                     :style="mergedPopoverStyle">
                 <label>
                     <input
-                            :style="{width: ((Math.log10(maxAnchorValue)+1) * 7)+'px'}"
-                            v-model="anchor1Value"/>
+                            type="text"
+                            ref="input1"
+                            v-digits-only
+                            v-model.number="anchor1Value"
+                            v-autowidth="{maxWidth: '960px', minWidth: '12px', comfortZone: 0}"
+                    />
+                </label>
+
+                <label>
+                    <input
+                            type="text"
+                            ref="input_"
+                            disabled
+                            value="-"
+                            v-autowidth="{maxWidth: '960px', minWidth: '0', comfortZone: 0}"
+                    />
                 </label>
                 <label>
                     <input
-                            :style="{float:isRtl?'left':'right',width: ((Math.log10(maxAnchorValue)+1) * 7)+'px'}"
-                            v-model="anchor2Value"/>
+                            type="text"
+                            ref="input2"
+                            v-digits-only
+                            v-model.number="anchor2Value"
+                            v-autowidth="{maxWidth: '960px', minWidth: '12px', comfortZone: 0}"
+                    />
                 </label>
             </div>
 
@@ -29,8 +47,8 @@
             >
                 <div
                         tabindex="1"
+                        @mousedown="mouseDown(1, $event)"
                         @keydown="keyDown(1,$event)"
-                        @mousedown="mouseDown(1)"
                         class="simple-range-slider-handle"/>
                 <div
                         v-if="!popoverMerged"
@@ -39,8 +57,12 @@
                 >
                     <label>
                         <input
-                                :style="{width: ((Math.log10(maxAnchorValue)+1) * 7)+'px'}"
-                                v-model="anchor1Value"/>
+                                type="text"
+                                ref="input1"
+                                v-digits-only
+                                v-model.number="anchor1Value"
+                                v-autowidth="{maxWidth: '960px', minWidth: '12px', comfortZone: 0}"
+                        />
                     </label>
                 </div>
                 <div class="simple-range-slider-popover-arrow"/>
@@ -53,17 +75,21 @@
             >
                 <div
                         tabindex="1"
+                        @mousedown="mouseDown(2, $event)"
                         @keydown="keyDown(2,$event)"
-                        @mousedown="mouseDown(2)"
                         class="simple-range-slider-handle"/>
                 <div
                         v-if="!popoverMerged"
-                        :style="{left: isRtl?'0 !important':'',right: isRtl?'unset !important':''}"
+                        :style="{left: isRtl?'-3px !important':'',right: isRtl?'unset !important':''}"
                         class="simple-range-slider-popover">
                     <label>
                         <input
-                                :style="{width: ((Math.log10(maxAnchorValue)+1) * 7)+'px'}"
-                                v-model="anchor2Value"/>
+                                type="text"
+                                ref="input2"
+                                v-digits-only
+                                v-model.number="anchor2Value"
+                                v-autowidth="{maxWidth: '960px', minWidth: '12px', comfortZone: 0}"
+                        />
                     </label>
                 </div>
 
@@ -78,7 +104,7 @@
 </template>
 
 <script lang="ts">
-    import {Component, Prop, Vue} from 'vue-property-decorator';
+    import {Component, Prop, Vue, Watch} from 'vue-property-decorator';
 
     @Component
     export default class VueSimpleRangeSlider extends Vue {
@@ -90,10 +116,65 @@
         @Prop() activeBarColor?: string;
         @Prop() barColor?: string;
 
+        // Slider value and component internal value are inconsistent
+        private get isNotSync() {
+
+            const isNotSnc = Array.isArray(this.value)
+                ? (!this.tempValue || !Array.isArray(this.tempValue)) ||
+                //@ts-ignore
+                this.value.some((val, index) => val !== this.tempValue[index])
+                : this.value !== this.tempValue;
+            return isNotSnc;
+        }
+
+
+        get syncValue() {
+            if (Array.isArray(this.value) && this.isNotSync) {
+                const value = this.value as [number, number];
+                this.value1ToPosition(value[0]);
+                this.value2ToPosition(value[1]);
+            } else if (this.isNotSync) {
+                const value = this.value as [number, number];
+                this.value1ToPosition(this.value as number);
+            }
+            return this.value;
+        }
+
+        tempValue!: number | [number, number];
+
+        // eslint-disable-next-line @typescript-eslint/adjacent-overload-signatures
+        set syncValue($value) {
+            this.tempValue = $value;
+            this.$emit('input', $value);
+        }
+
+
         isRtl = false;
 
+        @Watch('popoverMerged')
+        popoverMergedStateChange() {
+            if (this.$refs.input1 instanceof HTMLInputElement && document.activeElement === this.$refs.input1) {
+                const position = this.$refs.input1.selectionStart as number;
+                this.$nextTick().then(() => {
+                    if (this.$refs.input1 instanceof HTMLInputElement) {
+                        this.$refs.input1.focus();
+                        this.$refs.input1.setSelectionRange(position, position);
+                    }
+                });
+            }
+            if (this.$refs.input2 instanceof HTMLInputElement && document.activeElement === this.$refs.input2) {
+                const position = this.$refs.input2.selectionStart as number;
+                this.$nextTick().then(() => {
+                    if (this.$refs.input2 instanceof HTMLInputElement) {
+                        this.$refs.input2.focus();
+                        this.$refs.input2.setSelectionRange(position, position);
+                    }
+                });
+            }
+        }
+
         get popoverMerged() {
-            return this.anchor2Position - this.anchor1Position < (((Math.log10(this.maxAnchorValue) + 1) * 7) * 2 + 4)
+            return this.anchor2Position - this.anchor1Position < (this.input1Width + this.input2Width) + 4
                 && this.isRange;
         }
 
@@ -126,21 +207,26 @@
                     (this.isRtl ? (this.width - this.anchor2Position - 7.5) : (this.anchor2Position - 7.5)) +
                     (this.isRtl ? (this.width - this.anchor1Position - 7.5) : (this.anchor1Position - 7.5))
                 ) / 2
-                - (Math.log10(this.maxAnchorValue) + 1) * 7;
+                - (this.input1Width + this.input2Width + this.dashInput) / 2 + 3;
             translateX = Math.max(translateX, -10);
-            translateX = Math.min(translateX, this.width - ((Math.log10(this.maxAnchorValue) + 1) * 7) * 2 + 4);
+            translateX = Math.min(translateX, this.width - (this.input1Width + this.input2Width + this.dashInput) + 10);
             return {
                 transform: 'translateX(' + translateX + 'px)',
                 width: (this.anchor2Position - this.anchor1Position + 7.5) + 'px',
                 direction: this.isRtl ? 'rtl' : 'ltr',
-                minWidth: (((Math.log10(this.maxAnchorValue) + 1) * 7) * 2 + 4) + 'px'
+                minWidth: ((this.input1Width + this.input2Width + this.dashInput)) + 6 + 'px'
             }
         }
 
         get anchor1Value(): number {
-            if (Array.isArray(this.value))
-                return this.value[0];
-            return this.value;
+            this.$nextTick().then(() => {
+                if (this.$refs.input1 instanceof HTMLElement) {
+                    this.input1Width = Math.max(12, Number.parseInt(this.$refs.input1.style.width.replace('px', '')));
+                }
+            });
+            if (Array.isArray(this.syncValue))
+                return this.syncValue[0];
+            return this.syncValue;
         }
 
         set anchor1Value($value) {
@@ -149,23 +235,32 @@
                 $value = Math.min(this.anchor2Value, $value);
             }
             if (this.isRange) {
-                const value = [...this.value as [number, number]] as [number, number];
+                const value = [...this.syncValue as [number, number]] as [number, number];
                 value[0] = $value;
-                this.setValue(value);
-                if (this.logarithmic) {
-                    this.anchor1PositionV = this.unLog($value);
-                } else {
-                    this.anchor1PositionV = Math.round($value * this.scale);
-                }
+                this.syncValue = value;
             } else {
-                this.setValue($value)
+                this.syncValue = $value;
+            }
+            this.value1ToPosition($value);
+        }
+
+        value1ToPosition($value: number) {
+            if (this.logarithmic) {
+                this.anchor1PositionV = this.unLog($value);
+            } else {
+                this.anchor1PositionV = Math.round($value * this.scale);
             }
         }
 
         get anchor2Value(): number {
-            if (Array.isArray(this.value))
-                return this.value[1];
-            return this.value;
+            this.$nextTick().then(() => {
+                if (this.$refs.input2 instanceof HTMLElement) {
+                    this.input2Width = Math.max(12, Number.parseInt(this.$refs.input2.style.width.replace('px', '')));
+                }
+            });
+            if (Array.isArray(this.syncValue))
+                return this.syncValue[1];
+            return this.syncValue;
         }
 
         set anchor2Value($value) {
@@ -174,23 +269,25 @@
                 $value = Math.max(this.anchor1Value, $value);
             }
             if (this.isRange) {
-                const value = [...this.value as [number, number]] as [number, number];
+                const value = [...this.syncValue as [number, number]] as [number, number];
                 value[1] = $value;
-                this.setValue(value);
+                this.syncValue = value
+            } else {
+                this.syncValue = $value
+            }
+            this.value2ToPosition($value);
+        }
+
+        value2ToPosition($value: number) {
+            if (this.isRange) {
                 if (this.logarithmic) {
                     this.anchor2PositionV = this.unLog($value);
                 } else {
                     this.anchor2PositionV = Math.round($value * this.scale);
                 }
-
-            } else {
-                this.setValue($value)
             }
         }
 
-        setValue($value: [number, number] | number) {
-            this.$emit('input', $value)
-        }
 
         anchor1PositionV = 0;
 
@@ -198,10 +295,16 @@
             return this.anchor1PositionV;
         }
 
+        input1Width = 0;
+        input2Width = 0;
+        dashInput = 0;
+
+        // eslint-disable-next-line @typescript-eslint/adjacent-overload-signatures
         set anchor1Position($position) {
-            if (Array.isArray(this.value)) {
+            if (Array.isArray(this.syncValue)) {
                 $position = Math.min(this.anchor2Position, $position);
             }
+
             if (this.logarithmic) {
                 this.anchor1Value = this.log($position);
             } else {
@@ -213,11 +316,11 @@
         anchor2PositionV = 0;
 
         get anchor2Position() {
-            return this.anchor2PositionV;//this.unLog(this.anchor2Value * this.scale);
+            return this.anchor2PositionV;
         }
 
         set anchor2Position($position) {
-            if (Array.isArray(this.value)) {
+            if (Array.isArray(this.syncValue)) {
                 $position = Math.max(this.anchor1Position, $position);
             }
             if (this.logarithmic) {
@@ -225,7 +328,7 @@
             } else {
                 this.anchor2Value = Math.round($position / this.scale);
             }
-            this.anchor2PositionV = Math.max(0, Math.min(this.width, $position))
+            this.anchor2PositionV = Math.max(0, Math.min(this.width, $position));
         }
 
         width = 50;
@@ -243,9 +346,17 @@
         }
 
         draggingAnchor = 0;
+        dragStartX = 0;
+        dragStartPosition = 0;
 
-        mouseDown($anchor: number) {
+        mouseDown($anchor: number, $event: MouseEvent) {
             this.draggingAnchor = $anchor;
+            this.dragStartX = $event.x;
+            if ($anchor == 1) {
+                this.dragStartPosition = this.anchor1Position;
+            } else {
+                this.dragStartPosition = this.anchor2Position;
+            }
 
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             const win: any = window;
@@ -253,15 +364,15 @@
             win.$SRSMouseMove = ($event: MouseEvent) => {
                 if ($anchor == 1) {
                     if (this.isRtl) {
-                        this.anchor1Position = this.width - $event.x + 17.5;
+                        this.anchor1Position = this.dragStartPosition + this.dragStartX - $event.x;
                     } else {
-                        this.anchor1Position = $event.x - 15;
+                        this.anchor1Position = this.dragStartPosition - this.dragStartX + $event.x;
                     }
                 } else {
                     if (this.isRtl) {
-                        this.anchor2Position = this.width - $event.x + 17.5;
+                        this.anchor2Position = this.dragStartPosition + this.dragStartX - $event.x;
                     } else {
-                        this.anchor2Position = $event.x - 15;
+                        this.anchor2Position = this.dragStartPosition - this.dragStartX + $event.x;
                     }
                 }
                 this.$forceUpdate();
@@ -284,14 +395,22 @@
             let speed = 40;
             let count = 0;
             const change = () => {
-                if ($event.code === "ArrowDown" || $event.code === "ArrowLeft") {
+                if (
+                    (!this.isRtl && ($event.code === "ArrowDown" || $event.code === "ArrowLeft"))
+                    ||
+                    (this.isRtl && ($event.code === "ArrowUp" || $event.code === "ArrowRight"))
+                ) {
                     if ($anchor == 1) {
                         this.anchor1Position--;
                     }
                     if ($anchor == 2) {
                         this.anchor2Position--;
                     }
-                } else if ($event.code === "ArrowUp" || $event.code === "ArrowRight") {
+                } else if (
+                    (!this.isRtl && ($event.code === "ArrowUp" || $event.code === "ArrowRight"))
+                    ||
+                    (this.isRtl && ($event.code === "ArrowDown" || $event.code === "ArrowLeft"))
+                ) {
                     if ($anchor == 1) {
                         this.anchor1Position++;
                     }
@@ -319,22 +438,19 @@
         }
 
         mounted() {
+
             if (this.getStyle(this.$el as HTMLElement, 'direction') === 'rtl') {
                 this.isRtl = true;
             }
             this.width = this.$el.getBoundingClientRect().width - 20;
+            //this.valueChanged(this.value);
             setTimeout(() => {
                 this.width = this.$el.getBoundingClientRect().width - 20;
             });
-            if (Array.isArray(this.value)) {
-                this.anchor1Value = this.value[0];
-                this.anchor2Value = this.value[1];
-                //this.anchor1PositionV = this.unLog(this.value[0]);
-                //this.anchor2PositionV = this.unLog(this.value[1]);
-            } else {
-                //this.anchor1PositionV = this.unLog(this.value);
-                this.anchor1Value = this.value
+            if (this.$refs.input_ instanceof HTMLElement) {
+                this.dashInput = Number.parseInt(this.$refs.input_.style.width.replace("px", ""));
             }
+
         }
 
         getStyle(el: HTMLElement, styleProp: string) {
@@ -355,17 +471,27 @@
             pos = Math.max(0, pos);
             const valueRange = Math.log(this.maxAnchorValue - this.minAnchorValue);
             const scale = valueRange / this.width;
-            let num = Math.ceil(Math.exp(scale * pos));// Math.ceil((Math.pow(pos / this.width, base) + 1 ) * valueRange);
-            const r10 = Math.pow(10, Math.floor(Math.log10(num)));
-            num = Math.ceil(num / r10) * r10;
+            let num = Math.floor(Math.exp(scale * pos));// Math.ceil((Math.pow(pos / this.width, base) + 1 ) * valueRange);
+            if (num - 1 !== 0) {
+                const r10 = Math.pow(10, Math.floor(Math.log10(num - 1)));
+                num = Math.floor(num / r10) * r10;
+            } else {
+                num--;
+            }
             return num + this.minAnchorValue;
         }
 
         unLog(num: number) {
+            num++;
             const valueRange = Math.log(this.maxAnchorValue - this.minAnchorValue);
             const scale = valueRange / this.width;
-            return Math.round((Math.log(num + 1) / Math.log(Math.E)) / scale);
+            if (this.isRtl) {
+                return Math.ceil((Math.log(num) / Math.log(Math.E)) / scale);
+            } else {
+                return Math.floor((Math.log(num) / Math.log(Math.E)) / scale);
+            }
         }
+
     }
 </script>
 
@@ -408,7 +534,7 @@
 
 
                 .simple-range-slider-popover-left
-                    left: 0
+                    left: -3px
                     right: unset !important
 
 
@@ -427,7 +553,7 @@
         .simple-range-slider-popover
             right: 0
             position: absolute
-            top: -27px
+            bottom: 20px
             background: white
             padding: 3px
             border-radius: 5px
@@ -438,7 +564,8 @@
                 outline: none
                 vertical-align: top
                 direction: ltr
+                padding: 0
 
         .simple-range-slider-merged-popover
-            top: -33px
+            bottom: 15px
 </style>

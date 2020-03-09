@@ -1,8 +1,8 @@
 <template>
-    <div dir="ltr">
+    <div dir="ltr" style="margin-left: 100px;font-size: 20px">
         {{value1}}
         <VueSimpleRangeSlider
-                style="width: 100px"
+                style="width: 1000px"
                 :min="0"
                 :max="1000000"
                 :logarithmic="true"
@@ -13,6 +13,25 @@
         {{value2}}
         <VueSimpleRangeSlider
                 style="width: 100px"
+                :min="0"
+                :max="40"
+                v-model="value2"
+        />
+
+
+        {{value1}}
+        <VueSimpleRangeSlider
+                style="width: 1000px;direction: rtl"
+                :min="0"
+                :max="1000000"
+                :logarithmic="true"
+                v-model="value1"
+                active-bar-color="red"
+                bar-color="blue"
+        />
+        {{value2}}
+        <VueSimpleRangeSlider
+                style="width: 100px;direction: rtl"
                 :min="0"
                 :max="40"
                 v-model="value2"
@@ -30,7 +49,7 @@
         },
     })
     export default class App extends Vue {
-        value1 = [0,3];
+        value1 = [0,10];
         value2 = 3;
 
 
@@ -45,5 +64,10 @@
         text-align: center;
         color: #2c3e50;
         margin-top: 60px;
+    }
+</style>
+<style>
+    input{
+        font-size: 30px;
     }
 </style>
