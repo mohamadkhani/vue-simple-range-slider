@@ -19,7 +19,7 @@ npm install vue-simple-range-slider
 ```
 Or
 ```
-yard add vue-simple-range-slider
+yarn add vue-simple-range-slider
 ```
 
 ### Example
