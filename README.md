@@ -66,3 +66,6 @@ export default {
 |logarithmic    |```boolean```                        |```false```|
 |barColor       |```string```                         |```#bebebe```|
 |activeBarColor |```string```                         |```#6699ff```|
+
+
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8JJDU889K64AL)
