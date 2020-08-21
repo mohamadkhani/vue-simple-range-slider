@@ -1,13 +1,22 @@
 {
   "name": "vue-simple-range-slider",
   "description": "Change Your numeric value or numeric range value with dragging handles",
-  "version": "0.1.6",
+  "version": "0.1.10",
   "private": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/mohamadkhani/vue-simple-range-slider"
   },
-  "keywords": ["vue","range-slider","numeric-picker","range-picker","numeric-range-picker","numeric-range","input-element","range-input"],
+  "keywords": [
+    "vue",
+    "range-slider",
+    "numeric-picker",
+    "range-picker",
+    "numeric-range-picker",
+    "numeric-range",
+    "input-element",
+    "range-input"
+  ],
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -39,9 +48,9 @@
     "typescript": "~3.7.5",
     "vue": "^2.6.11",
     "vue-class-component": "^7.2.2",
+    "vue-input-autowidth": "^1.0.10",
     "vue-property-decorator": "^8.3.0",
-    "vue-template-compiler": "^2.6.11",
-    "vue-input-autowidth": "^1.0.10"
+    "vue-template-compiler": "^2.6.11"
   },
   "main": "dist/vueSimpleRangeSlider.common.js",
   "files": [
