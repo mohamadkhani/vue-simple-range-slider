@@ -1,5 +1,6 @@
 <template>
   <div class="simple-range-slider">
+    <div>{{ props }}</div>
     <div class="simple-range-slider-bg-bar" :style="{ background: barColor }">
       <div class="simple-range-slider-bar" v-if="isRange" :style="barStyle" />
       <div
@@ -102,13 +103,15 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, ref } from "@vue/reactivity";
-import { getCurrentInstance, onMounted, StyleValue, watch } from "vue-demi";
+import { getCurrentInstance, onMounted, computed, ref, watch } from "vue";
+import { isVue2 } from "vue-demi";
+import { debounce } from "../utils.js";
 
 const props = defineProps<{
   msg?: string;
   default?: number;
-  modelValue: [number, number] | number | undefined;
+  modelValue?: [number, number] | number | undefined;
+  value?: [number, number] | number | undefined;
   exponential?: boolean;
   barColor?: string;
   activeBarColor?: string;
@@ -117,7 +120,7 @@ const props = defineProps<{
   significantFigures?: number;
 }>();
 const emit = defineEmits<{
-  (e: "input", value: [number, number] | number): void;
+  (e: "input", value: [number, number] | number | undefined): void;
   (e: "update:model-value", value: [number, number] | number | undefined): void;
 }>();
 
@@ -132,6 +135,26 @@ const anchor2PositionV = ref(0);
 const isRtl = ref(false);
 const anchorWidth = 15;
 const resizeObservers: { ro1?: ResizeObserver; ro2?: ResizeObserver } = {};
+
+const iValue = computed({
+  get: () => {
+    if (isVue2) return props.value;
+    else return props.modelValue;
+  },
+  set: (value) => {
+    if (
+      (Array.isArray(value) &&
+        Array.isArray(props.modelValue) &&
+        value[0] === props.modelValue[0] &&
+        value[1] === props.modelValue[1]) ||
+      (!Array.isArray(value) && value === props.modelValue)
+    ) {
+      return;
+    }
+    if (isVue2) emit("input", value);
+    else emit("update:model-value", value);
+  },
+});
 
 watch(
   () => input1.value,
@@ -170,7 +193,7 @@ watch(
 );
 
 watch(
-  () => props.modelValue,
+  () => iValue.value,
   (current, prev) => {
     if (isDragging.value) return;
     if (Array.isArray(current)) {
@@ -201,47 +224,57 @@ const input2Keydown = debounce(input2KeydownUD, 1000);
 
 const anchor1Value = computed<number | undefined>({
   get: () => {
-    if (isRange.value && Array.isArray(props.modelValue)) {
-      return props.modelValue[0];
-    } else if (!isRange.value && !Array.isArray(props.modelValue)) {
-      return props.modelValue;
+    if (isRange.value && Array.isArray(iValue.value)) {
+      return iValue.value[0];
+    } else if (!isRange.value && !Array.isArray(iValue.value)) {
+      return iValue.value;
+    } else {
+      return undefined;
     }
   },
   set: ($value: number | undefined) => {
-    if (isRange.value && Array.isArray(props.modelValue)) {
-      if ($value === props.modelValue[0]) return;
-      emit("update:model-value", [$value || 0, props.modelValue[1]]);
-    } else if (!isRange.value && !Array.isArray(props.modelValue)) {
-      if ($value === props.modelValue) return;
-      emit("update:model-value", $value);
+    if (isRange.value && Array.isArray(iValue.value)) {
+      if ($value === iValue.value[0]) return;
+      iValue.value = [$value || 0, iValue.value[1]];
+    } else if (!isRange.value && !Array.isArray(iValue.value)) {
+      if ($value === iValue.value) return;
+      iValue.value = $value;
     }
   },
 });
 
 const anchor2Value = computed<number | undefined>({
   get: () => {
-    if (isRange.value && Array.isArray(props.modelValue)) {
-      return props.modelValue[1];
-    } else if (!isRange.value && !Array.isArray(props.modelValue)) {
-      return props.modelValue;
+    if (isRange.value && Array.isArray(iValue.value)) {
+      return iValue.value[1];
+    } else if (!isRange.value && !Array.isArray(iValue.value)) {
+      return iValue.value;
+    } else {
+      return undefined;
     }
   },
   set: ($value: number | undefined) => {
-    if (isRange.value && Array.isArray(props.modelValue)) {
-      if ($value === props.modelValue[1]) return;
-      emit("update:model-value", [props.modelValue[0], $value || 0]);
-    } else if (!isRange.value && !Array.isArray(props.modelValue)) {
-      if ($value === props.modelValue) return;
-      emit("update:model-value", $value);
+    if (isRange.value && Array.isArray(iValue.value)) {
+      if ($value === iValue.value[1]) return;
+      iValue.value = [iValue.value[0], $value || 0];
+    } else if (!isRange.value && !Array.isArray(iValue.value)) {
+      if ($value === iValue.value) return;
+      iValue.value = $value;
     }
   },
 });
 
 const isRange = computed(() => {
-  return Array.isArray(props.modelValue);
+  return Array.isArray(iValue.value);
 });
 
 // eslint-disable-next-line @typescript-eslint/adjacent-overload-signatures
+
+const setAnchor2PositionUD = ($position: number) => {
+  anchor2Value.value = positionToValue($position);
+};
+
+const setAnchor2Position = debounce(setAnchor2PositionUD, 10);
 
 const anchor2Position = computed({
   get: () => {
@@ -250,24 +283,29 @@ const anchor2Position = computed({
   set: ($position) => {
     if ($position == anchor1PositionV.value) return;
     $position = positionLimits($position, 2);
-    anchor2Value.value = positionToValue($position);
     if (anchor2PositionV.value !== $position)
       anchor2PositionV.value = $position;
+    setAnchor2Position($position);
   },
 });
+
+const setAnchor1PositionUD = ($position: number) => {
+  anchor1Value.value = positionToValue($position);
+};
+
+const setAnchor1Position = debounce(setAnchor1PositionUD, 10);
 
 const anchor1Position = computed({
   get: () => {
     return anchor1PositionV.value;
   },
 
-  // eslint-disable-next-line @typescript-eslint/adjacent-overload-signatures
   set: ($position) => {
     if ($position == anchor1PositionV.value) return;
     $position = positionLimits($position, 1);
-    anchor1Value.value = positionToValue($position);
     if (anchor1PositionV.value !== $position)
       anchor1PositionV.value = $position;
+    setAnchor1Position($position);
   },
 });
 
@@ -339,7 +377,7 @@ const anchor2Style = computed(() => {
   };
 });
 
-const mergedPopoverStyle = computed<StyleValue>(() => {
+const mergedPopoverStyle = computed<CSSProperties>(() => {
   let translateX =
     ((isRtl.value
       ? width.value - anchor2Position.value - anchorWidth / 2
@@ -364,14 +402,6 @@ const mergedPopoverStyle = computed<StyleValue>(() => {
   };
 });
 
-const valueToPosition = ($value: number, $anchorIndex: 1 | 2) => {
-  if (props.exponential) {
-    return unLog($value);
-  } else {
-    return Math.round($value * scale.value);
-  }
-};
-
 const positionLimits = ($position: number, $anchorIndex: number) => {
   if ($anchorIndex === 2) {
     $position = Math.min(
@@ -388,12 +418,17 @@ const positionLimits = ($position: number, $anchorIndex: number) => {
   return $position;
 };
 
-const positionToValue = ($position: number) => {
-  /* if (isRange.value && $anchorIndex === 2) {
-    $position = Math.max($position - anchorWidth, 0);
-  } */
+const valueToPosition = ($value: number, $anchorIndex: 1 | 2) => {
   if (props.exponential) {
-    const r = log($position);
+    return unLog($value);
+  } else {
+    return Math.round($value * scale.value);
+  }
+};
+
+const positionToValue = ($position: number) => {
+  if (props.exponential) {
+    const r = Math.round(log($position));
     return r;
   } else {
     return Math.round($position / scale.value);
@@ -518,7 +553,7 @@ onMounted(() => {
     isRtl.value = true;
   }
   width.value =
-    instance?.proxy?.$el.getBoundingClientRect().width -
+    (instance?.proxy?.$el.getBoundingClientRect()?.width || 0) -
     20 -
     (isRange.value ? 15 : 0);
 });
@@ -542,43 +577,26 @@ const log = (pos: number, round: boolean = true) => {
   pos = Math.max(0, pos);
   const valueRange = Math.log(maxAnchorValue.value - minAnchorValue.value + 1);
   const scale = valueRange / width.value;
-  let num = Math.floor(Math.exp(scale * pos)); // Math.ceil((Math.pow(pos / width.value, base) + 1 ) * valueRange);
-  if (num - 1 !== 0) {
-    if (round) {
-      const base = Math.pow(10, props.significantFigures || 2);
-      console.log("base", base);
-      const r10 = Math.pow(
-        base,
-        Math.floor(Math.log(num - 1 + minAnchorValue.value) / Math.log(base))
-      );
-      num = Math.floor(num / r10) * r10;
-    }
-  } else {
-    num = num - 1 + minAnchorValue.value;
-  }
+  let num = Math.pow(Math.E, scale * pos); // Math.ceil((Math.pow(pos / width.value, base) + 1 ) * valueRange);
+  /*  if (round) {
+    const base = Math.pow(10, props.significantFigures || 2);
+    console.log("base", base);
+    const r10 = Math.pow(
+      base,
+      Math.floor(Math.log(num - 1 + minAnchorValue.value) / Math.log(base))
+    );
+    num = Math.floor(num / r10) * r10;
+  } */
   return num;
 };
 
 const unLog = (num: number): number => {
-  num++;
-  const valueRange = Math.log(maxAnchorValue.value - minAnchorValue.value + 1);
+  //num++;
+  const valueRange = Math.log(maxAnchorValue.value - minAnchorValue.value);
   const scale = valueRange / width.value;
-  if (isRtl.value) {
-    return Math.ceil(Math.log(num) / Math.log(Math.E) / scale);
-  } else {
-    return Math.floor(Math.log(num) / Math.log(Math.E) / scale);
-  }
+  console.log({ valueRange, scale });
+  return Math.log(num) / Math.log(Math.E) / scale;
 };
-
-function debounce(func: (...args: any[]) => void, wait: number) {
-  let timeout: any;
-  return function (...args: any[]) {
-    //@ts-ignore
-    const context = this;
-    clearTimeout(timeout);
-    timeout = setTimeout(() => func.apply(context, args), wait);
-  };
-}
 </script>
 
 <style scoped lang="sass">

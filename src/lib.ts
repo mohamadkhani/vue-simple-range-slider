@@ -1,4 +1,4 @@
-import Vue from "vue";
+/* import Vue from "vue";
 import VueSimpleRangeSlider from "@/components/VueSimpleRangeSlider.vue";
 
 //@ts-ignore
@@ -24,4 +24,4 @@ Vue.use(VueInputAutowidth);
 
 Vue.component('vueSimpleRangeSlider',VueSimpleRangeSlider);
 
-export default Vue.component('vueSimpleRangeSlider',VueSimpleRangeSlider);
+export default Vue.component('vueSimpleRangeSlider',VueSimpleRangeSlider); */
