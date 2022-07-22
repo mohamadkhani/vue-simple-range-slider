@@ -1,7 +1,5 @@
-import { isVue2, isVue3 } from "vue-demi";
-import Vue from "vue";
+import Vue from 'vue';
 
-import App from "../App.vue";
-console.log("isVue2", isVue2, isVue3);
+import App from '../App.vue';
 
-new Vue(App).$mount("#app");
+new Vue(App).$mount('#app');

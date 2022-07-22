@@ -165,7 +165,6 @@ const exp = (input: number, valueRange: number) => {
 const unExp = (input: number, valueRange: number): number => {
     const base = Math.E;
     const out = Math.log(input * (valueRange + base) + 1) / Math.log(base + valueRange);
-    console.log('$position', out, input);
     return out;
 };
 
@@ -239,7 +238,6 @@ onMounted(() => {
     resizeObservers.ro3 = new ResizeObserver((o) => {
         state.width = o[0].contentRect.width - (isRange.value ? anchorWidth : 0);
     });
-    console.log(bar.value);
     if (bar.value) {
         resizeObservers.ro3.unobserve(bar.value);
         state.width = bar.value.getBoundingClientRect()?.width - (isRange.value ? anchorWidth : 0);
@@ -508,7 +506,6 @@ const mergedPopoverStyle = computed<CSSProperties>(() => {
 
 const mouseDown = ($anchor: number, $event: MouseEvent) => {
     $event.preventDefault();
-    console.log('mouseDown');
     state.isDragging = true;
     state.draggingAnchor = $anchor;
     state.dragStartX = $event.x;
@@ -539,7 +536,6 @@ const mouseDown = ($anchor: number, $event: MouseEvent) => {
     };
 
     const mouseUp = () => {
-        console.log('mouseUp');
         state.isDragging = false;
         document.removeEventListener('mouseup', mouseUp);
         document.removeEventListener('mousemove', win.$SRSMouseMove);
