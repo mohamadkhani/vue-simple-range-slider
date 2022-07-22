@@ -22,12 +22,12 @@ test('simpleRangeSliderComponent', async () => {
 
     for (let i = 0; i <= 1000; i++) {
         wrapper.setProps({
-            value: [i, 100]
+            value: [i, 100],
+            modelValue: [i, 100]
         });
 
         await nextTick();
-        //await new Promise((resolve) => setTimeout(resolve, 1000));
-
+        
         const input1 = wrapper.find('.input1');
         const input2 = wrapper.find('.input2');
 
@@ -35,7 +35,8 @@ test('simpleRangeSliderComponent', async () => {
         expect(input2?.element).toBeTruthy();
 
         // Assert the rendered text of the component
-        expect(input1.text()).toBe((i).toLocaleString('en-US'));
+        expect(input1.text()).toBe(i.toLocaleString('en-US'));
         expect(input2.text()).toBe((100).toLocaleString('en-US'));
+        //await new Promise((resolve) => setTimeout(resolve, 1000));
     }
 });
