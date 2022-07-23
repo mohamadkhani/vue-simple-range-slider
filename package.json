@@ -17,11 +17,16 @@
         "input-element",
         "range-input"
     ],
+    "peerDependencies": {
+        "vue": ">=3.2.0||>=2.7.0"
+    },
     "scripts": {
         "dev": "vue-demi-switch 3 vue && vite -c ./src/vue3/vite.config.ts",
         "dev:vue2": "vue-demi-switch 2 vue2 && vite -c ./src/vue2/vite.config.ts",
-        "build": "vue-demi-switch 3 vue && vite -c ./src/vue3/vite.config.ts build",
+        "build": "run-p build:vite build:types",
+        "build:vite": "vue-demi-switch 3 vue && vite build",
         "build:vue2": "vue-demi-switch 2 vue2 && vite -c ./src/vue2/vite.config.ts build",
+        "build:types": "vue-tsc ./src/index.ts -d --emitDeclarationOnly --outDir ./dist",
         "test": "vue-demi-switch 3 vue && vitest",
         "test:vue2": "vue-demi-switch 2 vue2 && vitest",
         "lint": "vue-cli-service lint",
@@ -29,10 +34,6 @@
         "test:3": "vue-demi-switch 3 && jest"
     },
     "devDependencies": {
-        "@babel/core": "^7.14.6",
-        "@types/chai": "^4.3.1",
-        "@types/jest": "^28.1.6",
-        "@types/mocha": "^9.1.1",
         "@types/node": "^18.0.6",
         "@typescript-eslint/eslint-plugin": "^5.30.7",
         "@typescript-eslint/parser": "^5.30.7",
@@ -44,14 +45,11 @@
         "@vue/eslint-config-typescript": "^11.0.0",
         "@vue/reactivity": "^3.2.37",
         "@vue/test-utils": "^2.0.2",
-        "chai": "^4.3.6",
         "eslint": "^8.20.0",
         "eslint-plugin-prettier": "^4.2.1",
         "eslint-plugin-vue": "^9.2.0",
-        "jest": "^28.1.3",
         "jsdom": "^20.0.0",
-        "lerna": "^4.0.0",
-        "nx": "^14.4.3",
+        "npm-run-all": "^4.1.5",
         "prettier": "^2.7.1",
         "sass": "^1.53.0",
         "ts-jest": "^28.0.7",
@@ -61,11 +59,18 @@
         "vue": "^3.2.37",
         "vue-demi": "latest",
         "vue-jest": "^5.0.0-0",
-        "vue-loader": "^17.0.0",
-        "vue-template-compiler": "^2.7.7",
+        "vue-tsc": "^0.39.0",
         "vue2": "npm:vue@^2.7.7"
     },
-    "main": "dist/vueSimpleRangeSlider.common.js",
+    "main": "./dist/index.umd.js",
+    "exports": {
+        ".": {
+            "import": "./dist/index.es.js",
+            "require": "./dist/index.umd.js"
+        },
+        "./css": "./dist/style.css"
+    },
+    "types": "./dist/index.d.ts",
     "files": [
         "dist/*",
         "src/*",

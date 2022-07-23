@@ -31,6 +31,8 @@
   },
   "include": [
     "main.ts",
+    "index.ts",
+    "../components/simpleRangeSlider.vue",
     "shims-vue.d.ts"
   ],
   "exclude": [

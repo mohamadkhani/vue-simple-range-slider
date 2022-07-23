@@ -13,10 +13,6 @@
     "allowJs": true,
     "checkJs": false,
     "baseUrl": ".",
-    "types": [
-      "mocha",
-      "chai",
-    ],
     "paths": {
       "@/*": [
         "src/*"
@@ -30,12 +26,8 @@
     ]
   },
   "include": [
-    "src/*.tsx",
-    "src/**/*.vue",
-    "tests/**/*.ts",
-    "tests/**/*.tsx"
+    "src/index.ts",
+    "src/components/*.vue",
   ],
-  "exclude": [
-    "node_modules",
-  ]
+  "exclude": []
 }

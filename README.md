@@ -1,17 +1,17 @@
 # vue-simple-range-slider
 Change Your numeric value or numeric range value with dragging handles
 
-[Demo](https://csb-b2ovr.netlify.com/)
+[Demo]()
 
 
 ## Features
 
 * Single value and range slider support
-* Logarithmic and linear scale support
+* Exponential and linear scale support
 * Keyboard support
 * rtl support
 
-_Requires Vue 2.2+_
+_Requires Vue >=3.2.0 or >=2.7.0_
 
 ## Getting Started
 ```
@@ -30,42 +30,41 @@ yarn add vue-simple-range-slider
                     style="width: 300px"
                     :min="0"
                     :max="1000000"
-                    :logarithmic="true"
-                    v-model="range"
+                    :exponential="true"
+                    v-model="state.range"
             />
     <VueSimpleRangeSlider
                     style="width: 300px"
                     :min="0"
                     :max="20"
-                    v-model="number"
+                    v-model="state.number"
             />
   </div>
 </template>
 <script>
 import VueSimpleRangeSlider from 'vue-simple-range-slider';
-import 'vue-simple-range-slider/dist/vueSimpleRangeSlider.css'
-export default {
+import 'vue-simple-range-slider/dist/vueSimpleRangeSlider.css';
+import { reactive } from 'vue';
+export default defineComponent({
     // register the component
     components: { VueSimpleRangeSlider },
-    data() {
-          return {
-               range: [20,1000],
-               number: 10
-          }
+    setup: (){
+      const state = reactive({ range: [20,1000], number: 10 })
+      return { state }
     }
-}
+})
 </script>
 ```
     
 ### Props
-|Name           |Type|Default|
-|---            |---|---|
-|value          |```number``` Or ```[number,number]```||
-|min            |```number```                         |```0```   |
-|max            |```number```                         |```100``` |
-|logarithmic    |```boolean```                        |```false```|
-|barColor       |```string```                         |```#bebebe```|
-|activeBarColor |```string```                         |```#6699ff```|
+|Name             |Type|Default|
+|---              |---|---|
+|value(vue2)      |```number``` Or ```[number,number]```||
+|modelValue(vue2) |```number``` Or ```[number,number]```||
+|min              |```number```                         |```0```   |
+|max              |```number```                         |```100``` |
+|exponential      |```boolean```                        |```false```|
+|barColor         |```string```                         |```#bebebe```|
+|activeBarColor   |```string```                         |```#6699ff```|
 
 
-[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8JJDU889K64AL)

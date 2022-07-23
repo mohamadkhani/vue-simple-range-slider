@@ -116,7 +116,8 @@ import {
     watch,
     CSSProperties,
     reactive,
-    onUnmounted
+    onUnmounted,
+    defineComponent
 } from 'vue';
 import { isVue2 } from 'vue-demi';
 import { debounce } from '../utils.js';
@@ -184,6 +185,8 @@ const props = withDefaults(
         min: 0,
         max: 100,
         exponential: false,
+        activeBarColor: '#7e7e7e',
+        barColor: '#bebebe',
         keepJustSignificantFigures: true,
         significantFigures: 2
     }
@@ -601,6 +604,11 @@ const getStyle = (el: HTMLElement, styleProp: string) => {
         y = document.defaultView.getComputedStyle(el, null).getPropertyValue(styleProp);
     return y;
 };
+</script>
+<script lang="ts">
+export default defineComponent({
+    name: 'VueSimpleRangeSlider'
+});
 </script>
 
 <style scoped lang="sass">
