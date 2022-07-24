@@ -23,7 +23,7 @@
     "scripts": {
         "dev": "vue-demi-switch 3 vue && vite",
         "dev:vue2": "vue-demi-switch 2 vue && vite -c ./src/vue2/vite.config.ts",
-        "build": "run-p build:vue3 build:vue2",
+        "build": "run-s build:vue3 build:vue2",
         "build:vue3": "run-p build:vite build:types",
         "build:vite": "vue-demi-switch 3 vue && vite build",
         "build:types": "vue-tsc ./src/index.ts -d --emitDeclarationOnly --outDir ./dist",
