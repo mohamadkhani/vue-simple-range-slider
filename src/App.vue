@@ -16,7 +16,7 @@
         <VueSimpleRangeSlider style="width: 100px" :min="10" :max="40" v-model="state.value2" />
 
         <VueSimpleRangeSlider
-            style="width: 1000px; direction: rtl"
+            style="width: 500px; direction: rtl"
             :min="0"
             :max="1000000"
             :exponential="true"

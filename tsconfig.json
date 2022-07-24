@@ -26,8 +26,11 @@
     ]
   },
   "include": [
-    "src/index.ts",
+    "src/**/*.ts",
+    "src/shims-vue.d.ts",
     "src/components/*.vue",
   ],
-  "exclude": []
+  "exclude": [
+    "node_modules"
+  ]
 }

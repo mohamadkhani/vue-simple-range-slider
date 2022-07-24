@@ -6,7 +6,6 @@ import vue from '@vitejs/plugin-vue';
 export default defineConfig({
     plugins: [vue()],
     build: {
-        target: 'modules',
         minify: true,
         lib: {
             entry: path.resolve(__dirname, 'src/index.ts'),

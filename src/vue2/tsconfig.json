@@ -13,10 +13,7 @@
     "allowJs": true,
     "checkJs": false,
     "baseUrl": ".",
-    "types": [
-      "mocha",
-      "chai",
-    ],
+    "types": [],
     "paths": {
       "@/*": [
         "src/*"
