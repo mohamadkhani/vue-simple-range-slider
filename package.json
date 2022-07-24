@@ -22,11 +22,12 @@
     },
     "scripts": {
         "dev": "vue-demi-switch 3 vue && vite",
-        "dev:vue2": "vue-demi-switch 2 vue2 && vite -c ./src/vue2/vite.config.ts",
-        "build": "run-p build:vite build:types",
+        "dev:vue2": "vue-demi-switch 2 vue && vite -c ./src/vue2/vite.config.ts",
+        "build": "run-p build:vue3 build:vue2",
+        "build:vue3": "run-p build:vite build:types",
         "build:vite": "vue-demi-switch 3 vue && vite build",
-        "build:vue2": "vue-demi-switch 2 vue2 && vite -c ./src/vue2/vite.config.ts build",
         "build:types": "vue-tsc ./src/index.ts -d --emitDeclarationOnly --outDir ./dist",
+        "build:vue2": "vue-demi-switch 2 vue && vite -c ./src/vue2/vite.config.ts build",
         "test": "vue-demi-switch 3 vue && vitest",
         "test:vue2": "vue-demi-switch 2 vue2 && vitest",
         "lint": "vue-cli-service lint",
@@ -67,9 +68,13 @@
             "import": "./dist/index.es.js",
             "require": "./dist/index.umd.js"
         },
-        "./css": "./dist/style.css"
+        "./css": "./dist/style.css",
+        "./vue2": {
+            "import": "./dist/vue2/index.es.js",
+            "require": "./dist/vue2/index.umd.js"
+        }
     },
-    "types": "./dist/index.d.ts",
+    "types": "dist",
     "files": [
         "dist/*",
         "src/*",

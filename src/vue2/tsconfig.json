@@ -28,6 +28,7 @@
   },
   "include": [
     "main.ts",
+    "index.ts",
     "shims-vue.d.ts"
   ],
   "exclude": [

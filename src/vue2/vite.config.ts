@@ -19,12 +19,12 @@ export default defineConfig({
     ],
     build: {
         lib: {
-            entry: path.resolve(__dirname, '../components/index.ts'),
+            entry: path.resolve(__dirname, '/index.ts'),
             name: 'VueSimpleRangeSlider',
             fileName: (format) => `index.${format}.js`
         },
         rollupOptions: {
-            external: ['vue'],
+            external: ['vue', 'vue-tsc'],
             output: {
                 // Provide global variables to use in the UMD build
                 // Add external deps here
@@ -32,6 +32,7 @@ export default defineConfig({
                     vue: 'Vue'
                 }
             }
-        }
-    }
+        },
+        outDir: '../../dist/vue2'
+    },
 });
