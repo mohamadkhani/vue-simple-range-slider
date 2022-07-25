@@ -343,6 +343,8 @@ const anchor2Value = computed<number | undefined>({
 
 const iValue = computed({
     get: () => {
+        console.log('isVue',process?.env?.ISVUE2);
+        console.log('env', process?.env);
         if (isVue2) return props.value;
         else return props.modelValue;
     },
