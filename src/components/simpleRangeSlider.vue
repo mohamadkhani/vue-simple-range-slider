@@ -341,12 +341,11 @@ const anchor2Value = computed<number | undefined>({
     }
 });
 
-//@ts-ignore
-const ISVUE2 = import.meta.env.ISVUE2;
+const ISVUE2 = process.env.ISVUE2;
 
 const iValue = computed({
     get: () => {
-        if (isVue2 || ISVUE2) return props.value;
+        if (ISVUE2 || isVue2) return props.value;
         else return props.modelValue;
     },
     set: (value) => {
@@ -359,7 +358,7 @@ const iValue = computed({
         ) {
             return;
         }
-        if (isVue2 || ISVUE2) emit('input', value);
+        if (ISVUE2 || isVue2) emit('input', value);
         else emit('update:model-value', value);
     }
 });

@@ -34,5 +34,9 @@ export default defineConfig({
             }
         },
         outDir: '../../dist/vue2'
+    },
+
+    define: {
+        'process.env': { env: { ...process.env, ISVUE2: true } }
     }
 });
