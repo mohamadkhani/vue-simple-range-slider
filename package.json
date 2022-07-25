@@ -71,7 +71,7 @@
         },
         "./css": "./dist/style.css",
         "./vue2": {
-            "import": "./dist/vue2/index.common.min.js",
+            "import": "./dist/vue2/index.common.js",
             "require": "./dist/vue2/index.umd.min.js"
         }
     },
