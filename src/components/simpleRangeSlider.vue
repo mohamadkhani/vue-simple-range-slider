@@ -34,9 +34,10 @@
                         class="input2"
                         style="display: inline-block"
                         contenteditable="true"
-                        v-text="anchor2Value?.toLocaleString('en-US')"
                         @keydown="input2Keydown"
-                    />
+                    >
+                        {{ anchor2Value?.toLocaleString('en-US') }}
+                    </div>
                     <slot name="suffix" :value="anchor2Value" />
                 </div>
             </div>
@@ -62,10 +63,11 @@
                             ref="input1"
                             class="input1"
                             contenteditable="true"
-                            v-text="anchor1Value?.toLocaleString('en-US')"
                             style="display: inline-block"
                             @keydown="input1Keydown"
-                        />
+                        >
+                            {{ anchor1Value?.toLocaleString('en-US') }}
+                        </div>
                         <slot name="suffix" :value="input1Keydown" />
                     </div>
                 </div>
@@ -93,10 +95,11 @@
                             ref="input2"
                             class="input2"
                             contenteditable="true"
-                            v-text="anchor2Value?.toLocaleString('en-US')"
                             style="display: inline-block"
                             @keydown="input2Keydown"
-                        />
+                        >
+                            {{ anchor2Value?.toLocaleString('en-US') }}
+                        </div>
                         <slot name="suffix" :value="input2Keydown" />
                     </div>
                 </div>
