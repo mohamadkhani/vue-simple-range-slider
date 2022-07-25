@@ -186,7 +186,6 @@ __webpack_require__.r(__webpack_exports__);
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  "VueSimpleRangeSlider": function() { return /* reexport */ simpleRangeSlider; },
   "default": function() { return /* binding */ entry_lib; }
 });
 
@@ -218,8 +217,8 @@ if (typeof window !== 'undefined') {
 // EXTERNAL MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__(203);
 var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpack_require__.n(external_commonjs_vue_commonjs2_vue_root_Vue_);
-;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components/simpleRangeSlider.vue?vue&type=template&id=03a2d9fb&scoped=true&
-var render = function render(){var _vm=this,_c=_vm._self._c,_setup=_vm._self._setupProxy;return _c('div',{staticClass:"simple-range-slider"},[_c('div',{ref:"bar",staticClass:"simple-range-slider-bg-bar",style:({ background: _vm.barColor })},[(_setup.isRange)?_c('div',{staticClass:"simple-range-slider-bar",style:(_setup.barStyle)}):_vm._e(),(_setup.isPopoverMerged)?_c('div',{staticClass:"simple-range-slider-popover simple-range-slider-merged-popover",staticStyle:{"right":"unset"},style:(_setup.mergedPopoverStyle)},[_c('div',{ref:"input1Container",staticClass:"simple-range-slider-input-container"},[_vm._t("prefix",null,{"value":_setup.anchor1Value}),_c('div',{ref:"input1",staticClass:"input1",staticStyle:{"display":"inline-block"},attrs:{"contenteditable":"true"},domProps:{"innerHTML":_vm._s(_setup.anchor1Value?.toLocaleString('en-US'))},on:{"keydown":_setup.input1Keydown}}),_vm._t("suffix",null,{"value":_setup.anchor1Value})],2),_c('label',[_c('div',{ref:"input_",staticStyle:{"display":"inline-block","padding":"0 3px"}},[(_vm.$slots.splitter)?_vm._t("splitter"):[_vm._v("|")]],2)]),_c('div',{ref:"input2Container",staticClass:"simple-range-slider-input-container"},[_vm._t("prefix",null,{"value":_setup.anchor2Value}),_c('div',{ref:"input2",staticClass:"input2",staticStyle:{"display":"inline-block"},attrs:{"contenteditable":"true"},domProps:{"textContent":_vm._s(_setup.anchor2Value?.toLocaleString('en-US'))},on:{"keydown":_setup.input2Keydown}}),_vm._t("suffix",null,{"value":_setup.anchor2Value})],2)]):_vm._e(),_c('div',{staticClass:"simple-range-slider-anchor",style:(_setup.anchor1Style)},[_c('div',{staticClass:"simple-range-slider-handle",attrs:{"tabindex":"1"},on:{"mousedown":function($event){$event.preventDefault();$event.stopPropagation();return _setup.mouseDown(1, $event)},"keydown":function($event){return _setup.keyDown(1, $event)}}}),(!_setup.isPopoverMerged)?_c('div',{staticClass:"simple-range-slider-popover simple-range-slider-popover-left",style:({
+;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components/simpleRangeSlider.vue?vue&type=template&id=2db1cd1e&scoped=true&
+var render = function render(){var _vm=this,_c=_vm._self._c,_setup=_vm._self._setupProxy;return _c('div',{ref:"root",staticClass:"simple-range-slider"},[_c('div',{ref:"bar",staticClass:"simple-range-slider-bg-bar",style:({ background: _vm.barColor })},[(_setup.isRange)?_c('div',{staticClass:"simple-range-slider-bar",style:(_setup.barStyle)}):_vm._e(),(_setup.isPopoverMerged)?_c('div',{staticClass:"simple-range-slider-popover simple-range-slider-merged-popover",staticStyle:{"right":"unset"},style:(_setup.mergedPopoverStyle)},[_c('div',{ref:"input1Container",staticClass:"simple-range-slider-input-container"},[_vm._t("prefix",null,{"value":_setup.anchor1Value}),_c('div',{ref:"input1",staticClass:"input1",staticStyle:{"display":"inline-block"},attrs:{"contenteditable":"true"},domProps:{"innerHTML":_vm._s(_setup.anchor1Value?.toLocaleString('en-US'))},on:{"keydown":_setup.input1Keydown}}),_vm._t("suffix",null,{"value":_setup.anchor1Value})],2),_c('label',[_c('div',{ref:"input_",staticStyle:{"display":"inline-block","padding":"0 3px"}},[(_vm.$slots.splitter)?_vm._t("splitter"):[_vm._v("|")]],2)]),_c('div',{ref:"input2Container",staticClass:"simple-range-slider-input-container"},[_vm._t("prefix",null,{"value":_setup.anchor2Value}),_c('div',{ref:"input2",staticClass:"input2",staticStyle:{"display":"inline-block"},attrs:{"contenteditable":"true"},domProps:{"textContent":_vm._s(_setup.anchor2Value?.toLocaleString('en-US'))},on:{"keydown":_setup.input2Keydown}}),_vm._t("suffix",null,{"value":_setup.anchor2Value})],2)]):_vm._e(),_c('div',{staticClass:"simple-range-slider-anchor",style:(_setup.anchor1Style)},[_c('div',{staticClass:"simple-range-slider-handle",attrs:{"tabindex":"1"},on:{"mousedown":function($event){$event.preventDefault();$event.stopPropagation();return _setup.mouseDown(1, $event)},"keydown":function($event){return _setup.keyDown(1, $event)}}}),(!_setup.isPopoverMerged)?_c('div',{staticClass:"simple-range-slider-popover simple-range-slider-popover-left",style:({
                     right: _setup.state.isRtl ? '0 !important' : '',
                     left: _setup.state.isRtl ? 'unset' : ''
                 })},[_c('div',{ref:"input1Container",staticClass:"simple-range-slider-input-container"},[_vm._t("prefix",null,{"value":_setup.input1Keydown}),_c('div',{ref:"input1",staticClass:"input1",staticStyle:{"display":"inline-block"},attrs:{"contenteditable":"true"},domProps:{"textContent":_vm._s(_setup.anchor1Value?.toLocaleString('en-US'))},on:{"keydown":_setup.input1Keydown}}),_vm._t("suffix",null,{"value":_setup.input1Keydown})],2)]):_vm._e(),_c('div',{staticClass:"simple-range-slider-popover-arrow"})]),(_setup.isRange)?_c('div',{staticClass:"simple-range-slider-anchor",style:(_setup.anchor2Style)},[_c('div',{staticClass:"simple-range-slider-handle",attrs:{"tabindex":"1"},on:{"mousedown":function($event){$event.preventDefault();$event.stopPropagation();return _setup.mouseDown(2, $event)},"keydown":function($event){return _setup.keyDown(2, $event)}}}),(!_setup.isPopoverMerged)?_c('div',{staticClass:"simple-range-slider-popover simple-range-slider-popover-right",style:({
@@ -477,6 +476,7 @@ const __default__ = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.defineCompo
         const input2Container = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.ref)();
         const input_ = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.ref)();
         const bar = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.ref)();
+        const root = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.ref)();
         const resizeObservers = {};
         const state = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.reactive)({
             input1Width: 0,
@@ -494,8 +494,7 @@ const __default__ = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.defineCompo
         });
         const anchorWidth = 15;
         (0,external_commonjs_vue_commonjs2_vue_root_Vue_.onMounted)(() => {
-            const instance = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.getCurrentInstance)();
-            if (getStyle(instance?.proxy?.$el, 'direction') === 'rtl') {
+            if (getStyle(root.value, 'direction') === 'rtl') {
                 state.isRtl = true;
             }
             resizeObservers.ro3 = new ResizeObserver((o) => {
@@ -832,16 +831,16 @@ const __default__ = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.defineCompo
                 y = document.defaultView.getComputedStyle(el, null).getPropertyValue(styleProp);
             return y;
         };
-        return { __sfc: true, positionLimits, valueToPosition, positionToValue, roundValue, exp, unExp, props, emit, input1, input1Container, input2, input2Container, input_, bar, resizeObservers, state, anchorWidth, updateAnchor2Value, updateAnchor1Value, scale, anchor2Position, anchor1Position, isRange, anchor1Value, anchor2Value, iValue, input1KeydownUD, input1Keydown, input2KeydownUD, input2Keydown, isPopoverMerged, barStyle, anchor1Style, anchor2Style, mergedPopoverStyle, mouseDown, keyDown, getStyle };
+        return { __sfc: true, positionLimits, valueToPosition, positionToValue, roundValue, exp, unExp, props, emit, input1, input1Container, input2, input2Container, input_, bar, root, resizeObservers, state, anchorWidth, updateAnchor2Value, updateAnchor1Value, scale, anchor2Position, anchor1Position, isRange, anchor1Value, anchor2Value, iValue, input1KeydownUD, input1Keydown, input2KeydownUD, input2Keydown, isPopoverMerged, barStyle, anchor1Style, anchor2Style, mergedPopoverStyle, mouseDown, keyDown, getStyle };
     }
 }));
 
 ;// CONCATENATED MODULE: ../components/simpleRangeSlider.vue?vue&type=script&lang=ts&setup=true&
  /* harmony default export */ var components_simpleRangeSlidervue_type_script_lang_ts_setup_true_ = (simpleRangeSlidervue_type_script_lang_ts_setup_true_); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-70.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-70.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-70.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-70.use[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components/simpleRangeSlider.vue?vue&type=style&index=0&id=03a2d9fb&prod&scoped=true&lang=sass&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-70.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-70.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-70.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-70.use[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components/simpleRangeSlider.vue?vue&type=style&index=0&id=2db1cd1e&prod&scoped=true&lang=sass&
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ../components/simpleRangeSlider.vue?vue&type=style&index=0&id=03a2d9fb&prod&scoped=true&lang=sass&
+;// CONCATENATED MODULE: ../components/simpleRangeSlider.vue?vue&type=style&index=0&id=2db1cd1e&prod&scoped=true&lang=sass&
 
 ;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/runtime/componentNormalizer.js
 /* globals __VUE_SSR_CONTEXT__ */
@@ -956,7 +955,7 @@ var component = normalizeComponent(
   staticRenderFns,
   false,
   null,
-  "03a2d9fb",
+  "2db1cd1e",
   null
   
 )
@@ -964,8 +963,6 @@ var component = normalizeComponent(
 /* harmony default export */ var simpleRangeSlider = (component.exports);
 ;// CONCATENATED MODULE: ./lib.ts
 
-
-external_commonjs_vue_commonjs2_vue_root_Vue_default().component('vueSimpleRangeSlider', simpleRangeSlider);
 
 /* harmony default export */ var lib = (external_commonjs_vue_commonjs2_vue_root_Vue_default().component('vueSimpleRangeSlider', simpleRangeSlider));
 

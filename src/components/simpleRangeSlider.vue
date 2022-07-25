@@ -1,5 +1,5 @@
 <template>
-    <div class="simple-range-slider">
+    <div class="simple-range-slider" ref="root">
         <div class="simple-range-slider-bg-bar" :style="{ background: barColor }" ref="bar">
             <div class="simple-range-slider-bar" v-if="isRange" :style="barStyle" />
             <div
@@ -202,6 +202,7 @@ const input2 = ref<HTMLDivElement>();
 const input2Container = ref<HTMLDivElement>();
 const input_ = ref<HTMLDivElement>();
 const bar = ref<HTMLDivElement>();
+const root = ref<HTMLDivElement>();
 
 const resizeObservers: { ro1?: ResizeObserver; ro2?: ResizeObserver; ro3?: ResizeObserver } = {};
 const state = reactive<{
@@ -234,8 +235,7 @@ const state = reactive<{
 const anchorWidth = 15;
 
 onMounted(() => {
-    const instance = getCurrentInstance();
-    if (getStyle(instance?.proxy?.$el as HTMLElement, 'direction') === 'rtl') {
+    if (getStyle(root.value as HTMLElement, 'direction') === 'rtl') {
         state.isRtl = true;
     }
     resizeObservers.ro3 = new ResizeObserver((o) => {
