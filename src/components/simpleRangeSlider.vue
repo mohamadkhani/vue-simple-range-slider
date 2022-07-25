@@ -130,7 +130,11 @@ const positionLimits = ($position: number, $anchorIndex: number) => {
         $position = Math.min(state.width, Math.max(state.anchor1PositionV, $position));
     }
     if ($anchorIndex === 1) {
-        $position = Math.max(0, Math.min(isRange.value ? state.anchor2PositionV : state.width, $position));
+        $position = Math.min(
+            isRange.value ? valueToPosition(anchor1Value.value || props.min) : state.width,
+            $position
+        );
+        $position = Math.max(0, $position);
     }
     return $position;
 };
