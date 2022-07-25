@@ -73,7 +73,8 @@
         "./vue2": {
             "import": "./dist/vue2/index.common.js",
             "require": "./dist/vue2/index.umd.min.js"
-        }
+        },
+        "./vue2/css": "./dist/vue2/index.css"
     },
     "types": "dist",
     "files": [
