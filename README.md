@@ -1,5 +1,5 @@
 # vue-simple-range-slider
-Change Your numeric value or numeric range value with dragging handles
+Change your numeric value or numeric range value with dragging handles
 
 [Demo]()
 
@@ -35,12 +35,14 @@ yarn add vue-simple-range-slider
     >
       <template #prefix="{ value }">$</template>
     </VueSimpleRangeSlider>
+      
     <VueSimpleRangeSlider
       style="width: 300px"
       :min="0"
       :max="20"
       v-model="state.number"
     />
+      
   </div>
 </template>
 <script>
