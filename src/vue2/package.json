@@ -13,7 +13,6 @@
         "sass-loader": "^13.0.2"
     },
     "scripts": {
-        "build:vue2": "vue-demi-switch 2 vue && vite -c ./src/vue2/vite.config.ts build",
-        "build": "vue-demi-switch 2 vue2 && vue-cli-service build --target lib --name index  --dest ../../dist/vue2 ./lib.ts"
+        "build": "NODE_ENV=ISVUE2 vue-demi-switch 2 vue2 && vue-cli-service build --target lib --name index  --dest ../../dist/vue2 ./lib.ts"
     }
 }

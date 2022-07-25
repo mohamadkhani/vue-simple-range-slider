@@ -1,25 +1,25 @@
-import { defineComponent as te, ref as T, reactive as de, onMounted as ce, onUnmounted as fe, computed as h, watch as N, openBlock as I, createElementBlock as L, createElementVNode as f, normalizeStyle as C, unref as a, createCommentVNode as F, renderSlot as V, Fragment as ve, toDisplayString as q, withModifiers as Z, createTextVNode as pe, pushScopeId as ge, popScopeId as me } from "vue";
+import { defineComponent as te, ref as T, reactive as se, onMounted as ue, onUnmounted as de, computed as h, watch as N, openBlock as I, createElementBlock as L, createElementVNode as f, normalizeStyle as C, unref as a, createCommentVNode as F, renderSlot as V, Fragment as ce, toDisplayString as q, withModifiers as Z, createTextVNode as fe, pushScopeId as pe, popScopeId as ve } from "vue";
 import { isVue2 as $ } from "vue-demi";
-const ye = Math.max, he = Math.min;
+const ge = Math.max, me = Math.min;
 function ee(y, g, r) {
-  let w, S, P, M, m, b, p = 0, W = !1, d = !1, E = !0;
+  let w, S, E, M, m, R, v = 0, D = !1, d = !1, P = !0;
   if (typeof y != "function")
     throw new TypeError(FUNC_ERROR_TEXT);
-  g = Number(g) || 0, typeof r == "object" && (W = !!r.leading, d = "maxWait" in r, P = d ? ye(Number(r.maxWait) || 0, g) : P, E = "trailing" in r ? !!r.trailing : E);
+  g = Number(g) || 0, typeof r == "object" && (D = !!r.leading, d = "maxWait" in r, E = d ? ge(Number(r.maxWait) || 0, g) : E, P = "trailing" in r ? !!r.trailing : P);
   function _(i) {
-    let o = w, u = S;
-    return w = S = void 0, p = i, M = y.apply(u, o), M;
+    let l = w, u = S;
+    return w = S = void 0, v = i, M = y.apply(u, l), M;
   }
-  function D(i) {
-    return p = i, m = setTimeout(t, g), W ? _(i) : M;
+  function W(i) {
+    return v = i, m = setTimeout(t, g), D ? _(i) : M;
   }
   function H(i) {
-    let o = i - b, u = i - p, x = g - o;
-    return console.log("remainingWait"), d ? he(x, P - u) : x;
+    let l = i - R, u = i - v, x = g - l;
+    return console.log("remainingWait"), d ? me(x, E - u) : x;
   }
   function c(i) {
-    let o = i - b, u = i - p;
-    return b === void 0 || o >= g || o < 0 || d && u >= P;
+    let l = i - R, u = i - v;
+    return R === void 0 || l >= g || l < 0 || d && u >= E;
   }
   function t() {
     const i = Date.now();
@@ -28,30 +28,30 @@ function ee(y, g, r) {
     m = setTimeout(t, H(i));
   }
   function A(i) {
-    return m = void 0, E && w ? _(i) : (w = S = void 0, M);
+    return m = void 0, P && w ? _(i) : (w = S = void 0, M);
   }
   function J() {
-    m !== void 0 && clearTimeout(m), p = 0, w = b = S = m = void 0;
+    m !== void 0 && clearTimeout(m), v = 0, w = R = S = m = void 0;
   }
   function j() {
     return m === void 0 ? M : A(Date.now());
   }
   function K() {
-    let i = Date.now(), o = c(i);
-    if (w = arguments, S = this, b = i, o) {
+    let i = Date.now(), l = c(i);
+    if (w = arguments, S = this, R = i, l) {
       if (m === void 0)
-        return D(b);
+        return W(R);
       if (d)
-        return m = setTimeout(t, g), _(b);
+        return m = setTimeout(t, g), _(R);
     }
     return m === void 0 && (m = setTimeout(t, g)), M;
   }
   return K.cancel = J, K.flush = j, K;
 }
-const ne = (y) => (ge("data-v-d4a25ad5"), y = y(), me(), y), we = ["innerHTML"], Se = /* @__PURE__ */ pe("|"), Re = /* @__PURE__ */ ne(() => /* @__PURE__ */ f("div", { class: "simple-range-slider-popover-arrow" }, null, -1)), be = /* @__PURE__ */ ne(() => /* @__PURE__ */ f("div", { class: "simple-range-slider-popover-arrow" }, null, -1)), Ae = te({
+const ne = (y) => (pe("data-v-fed9e47b"), y = y(), ve(), y), ye = ["innerHTML"], he = /* @__PURE__ */ fe("|"), we = /* @__PURE__ */ ne(() => /* @__PURE__ */ f("div", { class: "simple-range-slider-popover-arrow" }, null, -1)), Se = /* @__PURE__ */ ne(() => /* @__PURE__ */ f("div", { class: "simple-range-slider-popover-arrow" }, null, -1)), be = te({
   name: "VueSimpleRangeSlider"
-}), xe = /* @__PURE__ */ te({
-  ...Ae,
+}), Re = /* @__PURE__ */ te({
+  ...be,
   props: {
     modelValue: null,
     value: null,
@@ -65,14 +65,13 @@ const ne = (y) => (ge("data-v-d4a25ad5"), y = y(), me(), y), we = ["innerHTML"],
   },
   emits: ["input", "update:model-value"],
   setup(y, { emit: g }) {
-    var Y;
     const r = y, w = (e, n) => (n === 2 && (e = Math.min(t.width, Math.max(t.anchor1PositionV, e))), n === 1 && (e = Math.max(0, Math.min(u.value ? t.anchor2PositionV : t.width, e))), e), S = (e) => {
       if (r.exponential) {
         const n = r.max - r.min;
-        return b((e - r.min) / n, n) * t.width;
+        return R((e - r.min) / n, n) * t.width;
       } else
         return (e - r.min) * K.value;
-    }, P = (e) => {
+    }, E = (e) => {
       if (r.exponential) {
         const n = r.max - r.min;
         let s = Math.round(m(e / t.width, n) * n) + r.min;
@@ -82,10 +81,10 @@ const ne = (y) => (ge("data-v-d4a25ad5"), y = y(), me(), y), we = ["innerHTML"],
     }, M = (e) => Number(e.toPrecision(r.significantFigures)), m = (e, n) => {
       const s = Math.E + n;
       return (Math.pow(s, e) - 1) / (Math.pow(s, 1) - 1);
-    }, b = (e, n) => {
+    }, R = (e, n) => {
       const s = Math.E;
       return Math.log(e * (n + s) + 1) / Math.log(s + n);
-    }, p = T(), W = T(), d = T(), E = T(), _ = T(), D = T(), H = T(), c = {}, t = de({
+    }, v = T(), D = T(), d = T(), P = T(), _ = T(), W = T(), H = T(), c = {}, t = se({
       input1Width: 0,
       input2Width: 0,
       dashInput: 80,
@@ -99,66 +98,66 @@ const ne = (y) => (ge("data-v-d4a25ad5"), y = y(), me(), y), we = ["innerHTML"],
       isDragging: !1,
       changingByKey: !1
     }), A = 15;
-    ce(() => {
+    ue(() => {
       var e;
-      ue(H.value, "direction") === "rtl" && (t.isRtl = !0), c.ro3 = new ResizeObserver((n) => {
+      oe(H.value, "direction") === "rtl" && (t.isRtl = !0), c.ro3 = new ResizeObserver((n) => {
         t.width = n[0].contentRect.width - (u.value ? A : 0);
-      }), D.value && (c.ro3.unobserve(D.value), t.width = ((e = D.value.getBoundingClientRect()) == null ? void 0 : e.width) - (u.value ? A : 0));
-    }), fe(() => {
+      }), W.value && (c.ro3.unobserve(W.value), t.width = ((e = W.value.getBoundingClientRect()) == null ? void 0 : e.width) - (u.value ? A : 0));
+    }), de(() => {
       var e;
       (e = c == null ? void 0 : c.ro3) == null || e.disconnect();
     });
     const J = (e) => {
-      U.value = P(e);
+      U.value = E(e);
     }, j = (e) => {
-      x.value = P(e);
+      x.value = E(e);
     }, K = h(() => t.width / (r.max - r.min)), i = h({
       get: () => t.anchor2PositionV,
       set: (e) => {
         e != t.anchor1PositionV && (e = w(e, 2), t.anchor2PositionV !== e && (t.anchor2PositionV = e), J(e));
       }
-    }), o = h({
+    }), l = h({
       get: () => t.anchor1PositionV,
       set: (e) => {
         e != t.anchor1PositionV && (e = w(e, 1), t.anchor1PositionV !== e && (t.anchor1PositionV = e), j(e));
       }
-    }), u = h(() => Array.isArray(l.value)), x = h({
-      get: () => u.value && Array.isArray(l.value) ? l.value[0] : !u.value && !Array.isArray(l.value) ? l.value : void 0,
+    }), u = h(() => Array.isArray(o.value)), x = h({
+      get: () => u.value && Array.isArray(o.value) ? o.value[0] : !u.value && !Array.isArray(o.value) ? o.value : void 0,
       set: (e) => {
-        if (u.value && Array.isArray(l.value)) {
-          if (e === l.value[0])
+        if (u.value && Array.isArray(o.value)) {
+          if (e === o.value[0])
             return;
-          l.value = [e || 0, l.value[1]];
-        } else if (!u.value && !Array.isArray(l.value)) {
-          if (e === l.value)
+          o.value = [e || 0, o.value[1]];
+        } else if (!u.value && !Array.isArray(o.value)) {
+          if (e === o.value)
             return;
-          l.value = e;
+          o.value = e;
         }
       }
     }), U = h({
-      get: () => u.value && Array.isArray(l.value) ? l.value[1] : !u.value && !Array.isArray(l.value) ? l.value : void 0,
+      get: () => u.value && Array.isArray(o.value) ? o.value[1] : !u.value && !Array.isArray(o.value) ? o.value : void 0,
       set: (e) => {
-        if (u.value && Array.isArray(l.value)) {
-          if (e === l.value[1])
+        if (u.value && Array.isArray(o.value)) {
+          if (e === o.value[1])
             return;
-          l.value = [l.value[0], e || 0];
-        } else if (!u.value && !Array.isArray(l.value)) {
-          if (e === l.value)
+          o.value = [o.value[0], e || 0];
+        } else if (!u.value && !Array.isArray(o.value)) {
+          if (e === o.value)
             return;
-          l.value = e;
+          o.value = e;
         }
       }
-    }), ie = (Y = process == null ? void 0 : process.env) == null ? void 0 : Y.ISVUE2, re = process == null ? void 0 : process.env, l = h({
-      get: () => (console.log("isVue", ie), console.log("env", re), $ ? r.value : r.modelValue),
+    }), G = { BASE_URL: "/", MODE: "production", DEV: !1, PROD: !0 }.ISVUE2, o = h({
+      get: () => $ || G ? r.value : r.modelValue,
       set: (e) => {
-        Array.isArray(e) && Array.isArray(r.modelValue) && e[0] === r.modelValue[0] && e[1] === r.modelValue[1] || !Array.isArray(e) && e === r.modelValue || g($ ? "input" : "update:model-value", e);
+        Array.isArray(e) && Array.isArray(r.modelValue) && e[0] === r.modelValue[0] && e[1] === r.modelValue[1] || !Array.isArray(e) && e === r.modelValue || g($ || G ? "input" : "update:model-value", e);
       }
     });
-    N(() => W.value, (e) => {
+    N(() => D.value, (e) => {
       c.ro1 && c.ro1.disconnect(), c.ro1 = new ResizeObserver((n) => {
         t.input1Width = n[0].target.getBoundingClientRect().width;
       }), e && c.ro1.observe(e);
-    }, { immediate: !0 }), N(() => E.value, (e) => {
+    }, { immediate: !0 }), N(() => P.value, (e) => {
       c.ro2 && c.ro2.disconnect(), c.ro2 = new ResizeObserver((n) => {
         t.input2Width = n[0].target.getBoundingClientRect().width;
       }), e && c.ro2.observe(e);
@@ -167,8 +166,8 @@ const ne = (y) => (ge("data-v-d4a25ad5"), y = y(), me(), y), we = ["innerHTML"],
       t.dashInput = ((n = e == null ? void 0 : e.getBoundingClientRect()) == null ? void 0 : n.width) || 30;
     }, {
       immediate: !0
-    }), N(() => l.value, (e, n) => {
-      t.isDragging || (Array.isArray(e) ? (o.value = S(e[0]), i.value = S(e[1])) : e ? o.value = S(e) : o.value = 0);
+    }), N(() => o.value, (e, n) => {
+      t.isDragging || (Array.isArray(e) ? (l.value = S(e[0]), i.value = S(e[1])) : e ? l.value = S(e) : l.value = 0);
     }, { immediate: !0 });
     const B = ee((e) => {
       setTimeout(() => {
@@ -180,64 +179,64 @@ const ne = (y) => (ge("data-v-d4a25ad5"), y = y(), me(), y), we = ["innerHTML"],
         var n;
         U.value = Number.parseInt(((n = d.value) == null ? void 0 : n.innerText.replace(/,/, "")) || "0");
       }, 100);
-    }, 1e3), O = h(() => i.value - o.value < t.input1Width + t.input2Width - 15 && u.value);
+    }, 1e3), O = h(() => i.value - l.value < t.input1Width + t.input2Width - 15 && u.value);
     N(() => O.value, () => {
-      if (p.value instanceof HTMLInputElement && document.activeElement === p.value) {
-        const e = p.value.selectionStart;
-        p.value instanceof HTMLInputElement && (p.value.focus(), p.value.setSelectionRange(e, e));
+      if (v.value instanceof HTMLInputElement && document.activeElement === v.value) {
+        const e = v.value.selectionStart;
+        v.value instanceof HTMLInputElement && (v.value.focus(), v.value.setSelectionRange(e, e));
       }
       if (d.value instanceof HTMLInputElement && document.activeElement === d.value) {
         const e = d.value.selectionStart;
         d.value instanceof HTMLInputElement && (d.value.focus(), d.value.setSelectionRange(e, e));
       }
     });
-    const ae = h(() => ({
-      transform: "translateX(" + (t.isRtl ? t.width - i.value : o.value) + "px)",
-      width: i.value - o.value + 15 + "px",
+    const ie = h(() => ({
+      transform: "translateX(" + (t.isRtl ? t.width - i.value : l.value) + "px)",
+      width: i.value - l.value + 15 + "px",
       background: r.activeBarColor
-    })), oe = h(() => ({
-      transform: "translateX(" + (t.isRtl ? t.width - o.value + (u.value ? 7.5 : -7.5) : o.value - 7.5) + "px)"
-    })), le = h(() => ({
+    })), re = h(() => ({
+      transform: "translateX(" + (t.isRtl ? t.width - l.value + (u.value ? 7.5 : -7.5) : l.value - 7.5) + "px)"
+    })), ae = h(() => ({
       transform: "translateX(" + (t.isRtl ? t.width - t.anchor2PositionV - 7.5 : t.anchor2PositionV + 7.5) + "px)"
-    })), se = h(() => {
-      let e = ((t.isRtl ? t.width - i.value - A / 2 : i.value - A / 2) + (t.isRtl ? t.width - o.value - A / 2 : o.value - A / 2)) / 2 - (t.input1Width + t.input2Width + t.dashInput) / 2 + 1;
+    })), le = h(() => {
+      let e = ((t.isRtl ? t.width - i.value - A / 2 : i.value - A / 2) + (t.isRtl ? t.width - l.value - A / 2 : l.value - A / 2)) / 2 - (t.input1Width + t.input2Width + t.dashInput) / 2 + 1;
       return e = Math.max(e, -10), e = Math.min(e, t.width - (t.input1Width + t.input2Width + t.dashInput) + 10), {
         transform: "translateX(" + e + "px)",
-        width: i.value - o.value + "px",
+        width: i.value - l.value + "px",
         direction: t.isRtl ? "rtl" : "ltr",
         minWidth: t.input1Width + t.input2Width + t.dashInput + 6 + "px"
       };
-    }), G = (e, n) => {
-      n.preventDefault(), t.isDragging = !0, t.draggingAnchor = e, t.dragStartX = n.x, e == 1 ? t.dragStartPosition = o.value : t.dragStartPosition = i.value;
+    }), Q = (e, n) => {
+      n.preventDefault(), t.isDragging = !0, t.draggingAnchor = e, t.dragStartX = n.x, e == 1 ? t.dragStartPosition = l.value : t.dragStartPosition = i.value;
       const s = window;
-      s.$SRSMouseMove = (R) => {
-        R.preventDefault(), e == 1 ? t.isRtl ? o.value = t.dragStartPosition + t.dragStartX - R.x : o.value = t.dragStartPosition - t.dragStartX + R.x : t.isRtl ? i.value = t.dragStartPosition + t.dragStartX - R.x : i.value = t.dragStartPosition - t.dragStartX + R.x;
+      s.$SRSMouseMove = (b) => {
+        b.preventDefault(), e == 1 ? t.isRtl ? l.value = t.dragStartPosition + t.dragStartX - b.x : l.value = t.dragStartPosition - t.dragStartX + b.x : t.isRtl ? i.value = t.dragStartPosition + t.dragStartX - b.x : i.value = t.dragStartPosition - t.dragStartX + b.x;
       };
       const k = () => {
         t.isDragging = !1, document.removeEventListener("mouseup", k), document.removeEventListener("mousemove", s.$SRSMouseMove);
       };
       document.addEventListener("mousemove", s.$SRSMouseMove), document.addEventListener("mouseup", k);
-    }, Q = (e, n) => {
+    }, Y = (e, n) => {
       if (t.changingByKey)
         return;
       t.changingByKey = !0;
       let s = 40, k = 0;
-      const R = () => {
-        !t.isRtl && (n.code === "ArrowDown" || n.code === "ArrowLeft") || t.isRtl && (n.code === "ArrowUp" || n.code === "ArrowRight") ? (e == 1 && o.value--, e == 2 && i.value--) : (!t.isRtl && (n.code === "ArrowUp" || n.code === "ArrowRight") || t.isRtl && (n.code === "ArrowDown" || n.code === "ArrowLeft")) && (e == 1 && o.value++, e == 2 && i.value++);
+      const b = () => {
+        !t.isRtl && (n.code === "ArrowDown" || n.code === "ArrowLeft") || t.isRtl && (n.code === "ArrowUp" || n.code === "ArrowRight") ? (e == 1 && l.value--, e == 2 && i.value--) : (!t.isRtl && (n.code === "ArrowUp" || n.code === "ArrowRight") || t.isRtl && (n.code === "ArrowDown" || n.code === "ArrowLeft")) && (e == 1 && l.value++, e == 2 && i.value++);
       };
-      R();
+      b();
       const z = setInterval(() => {
-        k++, !(k < s) && (s > 1 && s--, R());
+        k++, !(k < s) && (s > 1 && s--, b());
       }, 5);
       n.target instanceof HTMLElement && n.target.addEventListener("keyup", () => {
         t.changingByKey = !1, clearInterval(z);
       });
-    }, ue = (e, n) => {
+    }, oe = (e, n) => {
       let s;
       return e.currentStyle ? s = e.currentStyle[n] : window.getComputedStyle && (s = document.defaultView.getComputedStyle(e, null).getPropertyValue(n)), s;
     };
     return (e, n) => {
-      var s, k, R, z;
+      var s, k, b, z;
       return I(), L("div", {
         class: "simple-range-slider",
         ref_key: "root",
@@ -247,33 +246,33 @@ const ne = (y) => (ge("data-v-d4a25ad5"), y = y(), me(), y), we = ["innerHTML"],
           class: "simple-range-slider-bg-bar",
           style: C({ background: y.barColor }),
           ref_key: "bar",
-          ref: D
+          ref: W
         }, [
           a(u) ? (I(), L("div", {
             key: 0,
             class: "simple-range-slider-bar",
-            style: C(a(ae))
+            style: C(a(ie))
           }, null, 4)) : F("", !0),
           a(O) ? (I(), L("div", {
             key: 1,
-            style: C([{ right: "unset" }, a(se)]),
+            style: C([{ right: "unset" }, a(le)]),
             class: "simple-range-slider-popover simple-range-slider-merged-popover"
           }, [
             f("div", {
               class: "simple-range-slider-input-container",
               ref_key: "input1Container",
-              ref: W
+              ref: D
             }, [
               V(e.$slots, "prefix", { value: a(x) }, void 0, !0),
               f("div", {
                 ref_key: "input1",
-                ref: p,
+                ref: v,
                 class: "input1",
                 style: { display: "inline-block" },
                 contenteditable: "true",
                 innerHTML: (s = a(x)) == null ? void 0 : s.toLocaleString("en-US"),
-                onKeydown: n[0] || (n[0] = (...v) => a(B) && a(B)(...v))
-              }, null, 40, we),
+                onKeydown: n[0] || (n[0] = (...p) => a(B) && a(B)(...p))
+              }, null, 40, ye),
               V(e.$slots, "suffix", { value: a(x) }, void 0, !0)
             ], 512),
             f("label", null, [
@@ -282,15 +281,15 @@ const ne = (y) => (ge("data-v-d4a25ad5"), y = y(), me(), y), we = ["innerHTML"],
                 ref_key: "input_",
                 ref: _
               }, [
-                e.$slots.splitter ? V(e.$slots, "splitter", { key: 0 }, void 0, !0) : (I(), L(ve, { key: 1 }, [
-                  Se
+                e.$slots.splitter ? V(e.$slots, "splitter", { key: 0 }, void 0, !0) : (I(), L(ce, { key: 1 }, [
+                  he
                 ], 64))
               ], 512)
             ]),
             f("div", {
               class: "simple-range-slider-input-container",
               ref_key: "input2Container",
-              ref: E
+              ref: P
             }, [
               V(e.$slots, "prefix", { value: a(U) }, void 0, !0),
               f("div", {
@@ -299,19 +298,19 @@ const ne = (y) => (ge("data-v-d4a25ad5"), y = y(), me(), y), we = ["innerHTML"],
                 class: "input2",
                 style: { display: "inline-block" },
                 contenteditable: "true",
-                onKeydown: n[1] || (n[1] = (...v) => a(X) && a(X)(...v))
+                onKeydown: n[1] || (n[1] = (...p) => a(X) && a(X)(...p))
               }, q((k = a(U)) == null ? void 0 : k.toLocaleString("en-US")), 545),
               V(e.$slots, "suffix", { value: a(U) }, void 0, !0)
             ], 512)
           ], 4)) : F("", !0),
           f("div", {
             class: "simple-range-slider-anchor",
-            style: C(a(oe))
+            style: C(a(re))
           }, [
             f("div", {
               tabindex: "1",
-              onMousedown: n[2] || (n[2] = Z((v) => G(1, v), ["prevent", "stop"])),
-              onKeydown: n[3] || (n[3] = (v) => Q(1, v)),
+              onMousedown: n[2] || (n[2] = Z((p) => Q(1, p), ["prevent", "stop"])),
+              onKeydown: n[3] || (n[3] = (p) => Y(1, p)),
               class: "simple-range-slider-handle"
             }, null, 32),
             a(O) ? F("", !0) : (I(), L("div", {
@@ -325,31 +324,31 @@ const ne = (y) => (ge("data-v-d4a25ad5"), y = y(), me(), y), we = ["innerHTML"],
               f("div", {
                 class: "simple-range-slider-input-container",
                 ref_key: "input1Container",
-                ref: W
+                ref: D
               }, [
                 V(e.$slots, "prefix", { value: a(B) }, void 0, !0),
                 f("div", {
                   ref_key: "input1",
-                  ref: p,
+                  ref: v,
                   class: "input1",
                   contenteditable: "true",
                   style: { display: "inline-block" },
-                  onKeydown: n[4] || (n[4] = (...v) => a(B) && a(B)(...v))
-                }, q((R = a(x)) == null ? void 0 : R.toLocaleString("en-US")), 545),
+                  onKeydown: n[4] || (n[4] = (...p) => a(B) && a(B)(...p))
+                }, q((b = a(x)) == null ? void 0 : b.toLocaleString("en-US")), 545),
                 V(e.$slots, "suffix", { value: a(B) }, void 0, !0)
               ], 512)
             ], 4)),
-            Re
+            we
           ], 4),
           a(u) ? (I(), L("div", {
             key: 2,
             class: "simple-range-slider-anchor",
-            style: C(a(le))
+            style: C(a(ae))
           }, [
             f("div", {
               tabindex: "1",
-              onMousedown: n[5] || (n[5] = Z((v) => G(2, v), ["prevent", "stop"])),
-              onKeydown: n[6] || (n[6] = (v) => Q(2, v)),
+              onMousedown: n[5] || (n[5] = Z((p) => Q(2, p), ["prevent", "stop"])),
+              onKeydown: n[6] || (n[6] = (p) => Y(2, p)),
               class: "simple-range-slider-handle"
             }, null, 32),
             a(O) ? F("", !0) : (I(), L("div", {
@@ -363,7 +362,7 @@ const ne = (y) => (ge("data-v-d4a25ad5"), y = y(), me(), y), we = ["innerHTML"],
               f("div", {
                 class: "simple-range-slider-input-container",
                 ref_key: "input2Container",
-                ref: E
+                ref: P
               }, [
                 V(e.$slots, "prefix", { value: a(X) }, void 0, !0),
                 f("div", {
@@ -372,24 +371,24 @@ const ne = (y) => (ge("data-v-d4a25ad5"), y = y(), me(), y), we = ["innerHTML"],
                   class: "input2",
                   contenteditable: "true",
                   style: { display: "inline-block" },
-                  onKeydown: n[7] || (n[7] = (...v) => a(X) && a(X)(...v))
+                  onKeydown: n[7] || (n[7] = (...p) => a(X) && a(X)(...p))
                 }, q((z = a(U)) == null ? void 0 : z.toLocaleString("en-US")), 545),
                 V(e.$slots, "suffix", { value: a(X) }, void 0, !0)
               ], 512)
             ], 4)),
-            be
+            Se
           ], 4)) : F("", !0)
         ], 4)
       ], 512);
     };
   }
 });
-const ke = (y, g) => {
+const Ae = (y, g) => {
   const r = y.__vccOpts || y;
   for (const [w, S] of g)
     r[w] = S;
   return r;
-}, Te = /* @__PURE__ */ ke(xe, [["__scopeId", "data-v-d4a25ad5"]]);
+}, Ee = /* @__PURE__ */ Ae(Re, [["__scopeId", "data-v-fed9e47b"]]);
 export {
-  Te as default
+  Ee as default
 };
