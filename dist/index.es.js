@@ -1,11 +1,11 @@
-import { defineComponent as ee, ref as E, reactive as le, onMounted as se, onUnmounted as ue, computed as h, watch as N, openBlock as I, createElementBlock as L, createElementVNode as f, normalizeStyle as C, unref as a, createCommentVNode as F, renderSlot as V, Fragment as de, toDisplayString as q, withModifiers as Y, createTextVNode as ce, pushScopeId as fe, popScopeId as ve } from "vue";
-import { isVue2 as Z } from "vue-demi";
-const pe = Math.max, ge = Math.min;
-function $(y, g, r) {
-  let w, S, P, M, m, b, p = 0, W = !1, d = !1, T = !0;
+import { defineComponent as te, ref as T, reactive as de, onMounted as ce, onUnmounted as fe, computed as h, watch as N, openBlock as I, createElementBlock as L, createElementVNode as f, normalizeStyle as C, unref as a, createCommentVNode as F, renderSlot as V, Fragment as ve, toDisplayString as q, withModifiers as Z, createTextVNode as pe, pushScopeId as ge, popScopeId as me } from "vue";
+import { isVue2 as $ } from "vue-demi";
+const ye = Math.max, he = Math.min;
+function ee(y, g, r) {
+  let w, S, P, M, m, b, p = 0, W = !1, d = !1, E = !0;
   if (typeof y != "function")
     throw new TypeError(FUNC_ERROR_TEXT);
-  g = Number(g) || 0, typeof r == "object" && (W = !!r.leading, d = "maxWait" in r, P = d ? pe(Number(r.maxWait) || 0, g) : P, T = "trailing" in r ? !!r.trailing : T);
+  g = Number(g) || 0, typeof r == "object" && (W = !!r.leading, d = "maxWait" in r, P = d ? ye(Number(r.maxWait) || 0, g) : P, E = "trailing" in r ? !!r.trailing : E);
   function _(i) {
     let o = w, u = S;
     return w = S = void 0, p = i, M = y.apply(u, o), M;
@@ -15,7 +15,7 @@ function $(y, g, r) {
   }
   function H(i) {
     let o = i - b, u = i - p, x = g - o;
-    return console.log("remainingWait"), d ? ge(x, P - u) : x;
+    return console.log("remainingWait"), d ? he(x, P - u) : x;
   }
   function c(i) {
     let o = i - b, u = i - p;
@@ -28,7 +28,7 @@ function $(y, g, r) {
     m = setTimeout(t, H(i));
   }
   function A(i) {
-    return m = void 0, T && w ? _(i) : (w = S = void 0, M);
+    return m = void 0, E && w ? _(i) : (w = S = void 0, M);
   }
   function J() {
     m !== void 0 && clearTimeout(m), p = 0, w = b = S = m = void 0;
@@ -48,10 +48,10 @@ function $(y, g, r) {
   }
   return K.cancel = J, K.flush = j, K;
 }
-const te = (y) => (fe("data-v-ec7da2c9"), y = y(), ve(), y), me = ["innerHTML"], ye = /* @__PURE__ */ ce("|"), he = /* @__PURE__ */ te(() => /* @__PURE__ */ f("div", { class: "simple-range-slider-popover-arrow" }, null, -1)), we = /* @__PURE__ */ te(() => /* @__PURE__ */ f("div", { class: "simple-range-slider-popover-arrow" }, null, -1)), Se = ee({
+const ne = (y) => (ge("data-v-d4a25ad5"), y = y(), me(), y), we = ["innerHTML"], Se = /* @__PURE__ */ pe("|"), Re = /* @__PURE__ */ ne(() => /* @__PURE__ */ f("div", { class: "simple-range-slider-popover-arrow" }, null, -1)), be = /* @__PURE__ */ ne(() => /* @__PURE__ */ f("div", { class: "simple-range-slider-popover-arrow" }, null, -1)), Ae = te({
   name: "VueSimpleRangeSlider"
-}), Re = /* @__PURE__ */ ee({
-  ...Se,
+}), xe = /* @__PURE__ */ te({
+  ...Ae,
   props: {
     modelValue: null,
     value: null,
@@ -65,6 +65,7 @@ const te = (y) => (fe("data-v-ec7da2c9"), y = y(), ve(), y), me = ["innerHTML"],
   },
   emits: ["input", "update:model-value"],
   setup(y, { emit: g }) {
+    var Y;
     const r = y, w = (e, n) => (n === 2 && (e = Math.min(t.width, Math.max(t.anchor1PositionV, e))), n === 1 && (e = Math.max(0, Math.min(u.value ? t.anchor2PositionV : t.width, e))), e), S = (e) => {
       if (r.exponential) {
         const n = r.max - r.min;
@@ -84,7 +85,7 @@ const te = (y) => (fe("data-v-ec7da2c9"), y = y(), ve(), y), me = ["innerHTML"],
     }, b = (e, n) => {
       const s = Math.E;
       return Math.log(e * (n + s) + 1) / Math.log(s + n);
-    }, p = E(), W = E(), d = E(), T = E(), _ = E(), D = E(), H = E(), c = {}, t = le({
+    }, p = T(), W = T(), d = T(), E = T(), _ = T(), D = T(), H = T(), c = {}, t = de({
       input1Width: 0,
       input2Width: 0,
       dashInput: 80,
@@ -98,17 +99,17 @@ const te = (y) => (fe("data-v-ec7da2c9"), y = y(), ve(), y), me = ["innerHTML"],
       isDragging: !1,
       changingByKey: !1
     }), A = 15;
-    se(() => {
+    ce(() => {
       var e;
-      oe(H.value, "direction") === "rtl" && (t.isRtl = !0), c.ro3 = new ResizeObserver((n) => {
+      ue(H.value, "direction") === "rtl" && (t.isRtl = !0), c.ro3 = new ResizeObserver((n) => {
         t.width = n[0].contentRect.width - (u.value ? A : 0);
       }), D.value && (c.ro3.unobserve(D.value), t.width = ((e = D.value.getBoundingClientRect()) == null ? void 0 : e.width) - (u.value ? A : 0));
-    }), ue(() => {
+    }), fe(() => {
       var e;
       (e = c == null ? void 0 : c.ro3) == null || e.disconnect();
     });
     const J = (e) => {
-      B.value = P(e);
+      U.value = P(e);
     }, j = (e) => {
       x.value = P(e);
     }, K = h(() => t.width / (r.max - r.min)), i = h({
@@ -134,7 +135,7 @@ const te = (y) => (fe("data-v-ec7da2c9"), y = y(), ve(), y), me = ["innerHTML"],
           l.value = e;
         }
       }
-    }), B = h({
+    }), U = h({
       get: () => u.value && Array.isArray(l.value) ? l.value[1] : !u.value && !Array.isArray(l.value) ? l.value : void 0,
       set: (e) => {
         if (u.value && Array.isArray(l.value)) {
@@ -147,20 +148,17 @@ const te = (y) => (fe("data-v-ec7da2c9"), y = y(), ve(), y), me = ["innerHTML"],
           l.value = e;
         }
       }
-    }), l = h({
-      get: () => {
-        var e;
-        return console.log("isVue", (e = process == null ? void 0 : process.env) == null ? void 0 : e.ISVUE2), console.log("env", process == null ? void 0 : process.env), Z ? r.value : r.modelValue;
-      },
+    }), ie = (Y = process == null ? void 0 : process.env) == null ? void 0 : Y.ISVUE2, re = process == null ? void 0 : process.env, l = h({
+      get: () => (console.log("isVue", ie), console.log("env", re), $ ? r.value : r.modelValue),
       set: (e) => {
-        Array.isArray(e) && Array.isArray(r.modelValue) && e[0] === r.modelValue[0] && e[1] === r.modelValue[1] || !Array.isArray(e) && e === r.modelValue || g(Z ? "input" : "update:model-value", e);
+        Array.isArray(e) && Array.isArray(r.modelValue) && e[0] === r.modelValue[0] && e[1] === r.modelValue[1] || !Array.isArray(e) && e === r.modelValue || g($ ? "input" : "update:model-value", e);
       }
     });
     N(() => W.value, (e) => {
       c.ro1 && c.ro1.disconnect(), c.ro1 = new ResizeObserver((n) => {
         t.input1Width = n[0].target.getBoundingClientRect().width;
       }), e && c.ro1.observe(e);
-    }, { immediate: !0 }), N(() => T.value, (e) => {
+    }, { immediate: !0 }), N(() => E.value, (e) => {
       c.ro2 && c.ro2.disconnect(), c.ro2 = new ResizeObserver((n) => {
         t.input2Width = n[0].target.getBoundingClientRect().width;
       }), e && c.ro2.observe(e);
@@ -172,15 +170,15 @@ const te = (y) => (fe("data-v-ec7da2c9"), y = y(), ve(), y), me = ["innerHTML"],
     }), N(() => l.value, (e, n) => {
       t.isDragging || (Array.isArray(e) ? (o.value = S(e[0]), i.value = S(e[1])) : e ? o.value = S(e) : o.value = 0);
     }, { immediate: !0 });
-    const U = $((e) => {
+    const B = ee((e) => {
       setTimeout(() => {
         var n;
         x.value = Number.parseInt(((n = d.value) == null ? void 0 : n.innerText.replace(/,/, "")) || "0");
       }, 100);
-    }, 1e3), X = $((e) => {
+    }, 1e3), X = ee((e) => {
       setTimeout(() => {
         var n;
-        B.value = Number.parseInt(((n = d.value) == null ? void 0 : n.innerText.replace(/,/, "")) || "0");
+        U.value = Number.parseInt(((n = d.value) == null ? void 0 : n.innerText.replace(/,/, "")) || "0");
       }, 100);
     }, 1e3), O = h(() => i.value - o.value < t.input1Width + t.input2Width - 15 && u.value);
     N(() => O.value, () => {
@@ -193,15 +191,15 @@ const te = (y) => (fe("data-v-ec7da2c9"), y = y(), ve(), y), me = ["innerHTML"],
         d.value instanceof HTMLInputElement && (d.value.focus(), d.value.setSelectionRange(e, e));
       }
     });
-    const ne = h(() => ({
+    const ae = h(() => ({
       transform: "translateX(" + (t.isRtl ? t.width - i.value : o.value) + "px)",
       width: i.value - o.value + 15 + "px",
       background: r.activeBarColor
-    })), ie = h(() => ({
+    })), oe = h(() => ({
       transform: "translateX(" + (t.isRtl ? t.width - o.value + (u.value ? 7.5 : -7.5) : o.value - 7.5) + "px)"
-    })), re = h(() => ({
+    })), le = h(() => ({
       transform: "translateX(" + (t.isRtl ? t.width - t.anchor2PositionV - 7.5 : t.anchor2PositionV + 7.5) + "px)"
-    })), ae = h(() => {
+    })), se = h(() => {
       let e = ((t.isRtl ? t.width - i.value - A / 2 : i.value - A / 2) + (t.isRtl ? t.width - o.value - A / 2 : o.value - A / 2)) / 2 - (t.input1Width + t.input2Width + t.dashInput) / 2 + 1;
       return e = Math.max(e, -10), e = Math.min(e, t.width - (t.input1Width + t.input2Width + t.dashInput) + 10), {
         transform: "translateX(" + e + "px)",
@@ -234,7 +232,7 @@ const te = (y) => (fe("data-v-ec7da2c9"), y = y(), ve(), y), me = ["innerHTML"],
       n.target instanceof HTMLElement && n.target.addEventListener("keyup", () => {
         t.changingByKey = !1, clearInterval(z);
       });
-    }, oe = (e, n) => {
+    }, ue = (e, n) => {
       let s;
       return e.currentStyle ? s = e.currentStyle[n] : window.getComputedStyle && (s = document.defaultView.getComputedStyle(e, null).getPropertyValue(n)), s;
     };
@@ -254,11 +252,11 @@ const te = (y) => (fe("data-v-ec7da2c9"), y = y(), ve(), y), me = ["innerHTML"],
           a(u) ? (I(), L("div", {
             key: 0,
             class: "simple-range-slider-bar",
-            style: C(a(ne))
+            style: C(a(ae))
           }, null, 4)) : F("", !0),
           a(O) ? (I(), L("div", {
             key: 1,
-            style: C([{ right: "unset" }, a(ae)]),
+            style: C([{ right: "unset" }, a(se)]),
             class: "simple-range-slider-popover simple-range-slider-merged-popover"
           }, [
             f("div", {
@@ -274,8 +272,8 @@ const te = (y) => (fe("data-v-ec7da2c9"), y = y(), ve(), y), me = ["innerHTML"],
                 style: { display: "inline-block" },
                 contenteditable: "true",
                 innerHTML: (s = a(x)) == null ? void 0 : s.toLocaleString("en-US"),
-                onKeydown: n[0] || (n[0] = (...v) => a(U) && a(U)(...v))
-              }, null, 40, me),
+                onKeydown: n[0] || (n[0] = (...v) => a(B) && a(B)(...v))
+              }, null, 40, we),
               V(e.$slots, "suffix", { value: a(x) }, void 0, !0)
             ], 512),
             f("label", null, [
@@ -284,17 +282,17 @@ const te = (y) => (fe("data-v-ec7da2c9"), y = y(), ve(), y), me = ["innerHTML"],
                 ref_key: "input_",
                 ref: _
               }, [
-                e.$slots.splitter ? V(e.$slots, "splitter", { key: 0 }, void 0, !0) : (I(), L(de, { key: 1 }, [
-                  ye
+                e.$slots.splitter ? V(e.$slots, "splitter", { key: 0 }, void 0, !0) : (I(), L(ve, { key: 1 }, [
+                  Se
                 ], 64))
               ], 512)
             ]),
             f("div", {
               class: "simple-range-slider-input-container",
               ref_key: "input2Container",
-              ref: T
+              ref: E
             }, [
-              V(e.$slots, "prefix", { value: a(B) }, void 0, !0),
+              V(e.$slots, "prefix", { value: a(U) }, void 0, !0),
               f("div", {
                 ref_key: "input2",
                 ref: d,
@@ -302,17 +300,17 @@ const te = (y) => (fe("data-v-ec7da2c9"), y = y(), ve(), y), me = ["innerHTML"],
                 style: { display: "inline-block" },
                 contenteditable: "true",
                 onKeydown: n[1] || (n[1] = (...v) => a(X) && a(X)(...v))
-              }, q((k = a(B)) == null ? void 0 : k.toLocaleString("en-US")), 545),
-              V(e.$slots, "suffix", { value: a(B) }, void 0, !0)
+              }, q((k = a(U)) == null ? void 0 : k.toLocaleString("en-US")), 545),
+              V(e.$slots, "suffix", { value: a(U) }, void 0, !0)
             ], 512)
           ], 4)) : F("", !0),
           f("div", {
             class: "simple-range-slider-anchor",
-            style: C(a(ie))
+            style: C(a(oe))
           }, [
             f("div", {
               tabindex: "1",
-              onMousedown: n[2] || (n[2] = Y((v) => G(1, v), ["prevent", "stop"])),
+              onMousedown: n[2] || (n[2] = Z((v) => G(1, v), ["prevent", "stop"])),
               onKeydown: n[3] || (n[3] = (v) => Q(1, v)),
               class: "simple-range-slider-handle"
             }, null, 32),
@@ -329,28 +327,28 @@ const te = (y) => (fe("data-v-ec7da2c9"), y = y(), ve(), y), me = ["innerHTML"],
                 ref_key: "input1Container",
                 ref: W
               }, [
-                V(e.$slots, "prefix", { value: a(U) }, void 0, !0),
+                V(e.$slots, "prefix", { value: a(B) }, void 0, !0),
                 f("div", {
                   ref_key: "input1",
                   ref: p,
                   class: "input1",
                   contenteditable: "true",
                   style: { display: "inline-block" },
-                  onKeydown: n[4] || (n[4] = (...v) => a(U) && a(U)(...v))
+                  onKeydown: n[4] || (n[4] = (...v) => a(B) && a(B)(...v))
                 }, q((R = a(x)) == null ? void 0 : R.toLocaleString("en-US")), 545),
-                V(e.$slots, "suffix", { value: a(U) }, void 0, !0)
+                V(e.$slots, "suffix", { value: a(B) }, void 0, !0)
               ], 512)
             ], 4)),
-            he
+            Re
           ], 4),
           a(u) ? (I(), L("div", {
             key: 2,
             class: "simple-range-slider-anchor",
-            style: C(a(re))
+            style: C(a(le))
           }, [
             f("div", {
               tabindex: "1",
-              onMousedown: n[5] || (n[5] = Y((v) => G(2, v), ["prevent", "stop"])),
+              onMousedown: n[5] || (n[5] = Z((v) => G(2, v), ["prevent", "stop"])),
               onKeydown: n[6] || (n[6] = (v) => Q(2, v)),
               class: "simple-range-slider-handle"
             }, null, 32),
@@ -365,7 +363,7 @@ const te = (y) => (fe("data-v-ec7da2c9"), y = y(), ve(), y), me = ["innerHTML"],
               f("div", {
                 class: "simple-range-slider-input-container",
                 ref_key: "input2Container",
-                ref: T
+                ref: E
               }, [
                 V(e.$slots, "prefix", { value: a(X) }, void 0, !0),
                 f("div", {
@@ -375,23 +373,23 @@ const te = (y) => (fe("data-v-ec7da2c9"), y = y(), ve(), y), me = ["innerHTML"],
                   contenteditable: "true",
                   style: { display: "inline-block" },
                   onKeydown: n[7] || (n[7] = (...v) => a(X) && a(X)(...v))
-                }, q((z = a(B)) == null ? void 0 : z.toLocaleString("en-US")), 545),
+                }, q((z = a(U)) == null ? void 0 : z.toLocaleString("en-US")), 545),
                 V(e.$slots, "suffix", { value: a(X) }, void 0, !0)
               ], 512)
             ], 4)),
-            we
+            be
           ], 4)) : F("", !0)
         ], 4)
       ], 512);
     };
   }
 });
-const be = (y, g) => {
+const ke = (y, g) => {
   const r = y.__vccOpts || y;
   for (const [w, S] of g)
     r[w] = S;
   return r;
-}, Me = /* @__PURE__ */ be(Re, [["__scopeId", "data-v-ec7da2c9"]]);
+}, Te = /* @__PURE__ */ ke(xe, [["__scopeId", "data-v-d4a25ad5"]]);
 export {
-  Me as default
+  Te as default
 };
