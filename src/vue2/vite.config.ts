@@ -34,5 +34,5 @@ export default defineConfig({
             }
         },
         outDir: '../../dist/vue2'
-    },
+    }
 });

@@ -1,14 +1,4 @@
-(function webpackUniversalModuleDefinition(root, factory) {
-	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("vue"));
-	else if(typeof define === 'function' && define.amd)
-		define([], factory);
-	else if(typeof exports === 'object')
-		exports["index"] = factory(require("vue"));
-	else
-		root["index"] = factory(root["Vue"]);
-})((typeof self !== 'undefined' ? self : this), function(__WEBPACK_EXTERNAL_MODULE__203__) {
-return /******/ (function() { // webpackBootstrap
+/******/ (function() { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
 /***/ 679:
@@ -93,14 +83,6 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
   return getCurrentScript
 }));
 
-
-/***/ }),
-
-/***/ 203:
-/***/ (function(module) {
-
-"use strict";
-module.exports = __WEBPACK_EXTERNAL_MODULE__203__;
 
 /***/ })
 
@@ -215,9 +197,9 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// EXTERNAL MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
-var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__(203);
-var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpack_require__.n(external_commonjs_vue_commonjs2_vue_root_Vue_);
+;// CONCATENATED MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
+var external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject = require("vue");
+var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpack_require__.n(external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject);
 ;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components/simpleRangeSlider.vue?vue&type=template&id=03a2d9fb&scoped=true&
 var render = function render(){var _vm=this,_c=_vm._self._c,_setup=_vm._self._setupProxy;return _c('div',{staticClass:"simple-range-slider"},[_c('div',{ref:"bar",staticClass:"simple-range-slider-bg-bar",style:({ background: _vm.barColor })},[(_setup.isRange)?_c('div',{staticClass:"simple-range-slider-bar",style:(_setup.barStyle)}):_vm._e(),(_setup.isPopoverMerged)?_c('div',{staticClass:"simple-range-slider-popover simple-range-slider-merged-popover",staticStyle:{"right":"unset"},style:(_setup.mergedPopoverStyle)},[_c('div',{ref:"input1Container",staticClass:"simple-range-slider-input-container"},[_vm._t("prefix",null,{"value":_setup.anchor1Value}),_c('div',{ref:"input1",staticClass:"input1",staticStyle:{"display":"inline-block"},attrs:{"contenteditable":"true"},domProps:{"innerHTML":_vm._s(_setup.anchor1Value?.toLocaleString('en-US'))},on:{"keydown":_setup.input1Keydown}}),_vm._t("suffix",null,{"value":_setup.anchor1Value})],2),_c('label',[_c('div',{ref:"input_",staticStyle:{"display":"inline-block","padding":"0 3px"}},[(_vm.$slots.splitter)?_vm._t("splitter"):[_vm._v("|")]],2)]),_c('div',{ref:"input2Container",staticClass:"simple-range-slider-input-container"},[_vm._t("prefix",null,{"value":_setup.anchor2Value}),_c('div',{ref:"input2",staticClass:"input2",staticStyle:{"display":"inline-block"},attrs:{"contenteditable":"true"},domProps:{"textContent":_vm._s(_setup.anchor2Value?.toLocaleString('en-US'))},on:{"keydown":_setup.input2Keydown}}),_vm._t("suffix",null,{"value":_setup.anchor2Value})],2)]):_vm._e(),_c('div',{staticClass:"simple-range-slider-anchor",style:(_setup.anchor1Style)},[_c('div',{staticClass:"simple-range-slider-handle",attrs:{"tabindex":"1"},on:{"mousedown":function($event){$event.preventDefault();$event.stopPropagation();return _setup.mouseDown(1, $event)},"keydown":function($event){return _setup.keyDown(1, $event)}}}),(!_setup.isPopoverMerged)?_c('div',{staticClass:"simple-range-slider-popover simple-range-slider-popover-left",style:({
                     right: _setup.state.isRtl ? '0 !important' : '',
@@ -404,15 +386,15 @@ function throttle(func, wait, options) {
   });
 }
 
-;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/ts-loader/index.js??clonedRuleSet-83.use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components/simpleRangeSlider.vue?vue&type=script&lang=ts&setup=true&
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/ts-loader/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components/simpleRangeSlider.vue?vue&type=script&lang=ts&setup=true&
 
-const __default__ = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.defineComponent)({
+const __default__ = (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.defineComponent)({
     name: 'VueSimpleRangeSlider'
 });
 
 
 
-/* harmony default export */ var simpleRangeSlidervue_type_script_lang_ts_setup_true_ = (/*#__PURE__*/(0,external_commonjs_vue_commonjs2_vue_root_Vue_.defineComponent)({
+/* harmony default export */ var simpleRangeSlidervue_type_script_lang_ts_setup_true_ = (/*#__PURE__*/(0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.defineComponent)({
     ...__default__,
     props: {
         modelValue: null,
@@ -471,14 +453,14 @@ const __default__ = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.defineCompo
             const out = Math.log(input * (valueRange + base) + 1) / Math.log(base + valueRange);
             return out;
         };
-        const input1 = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.ref)();
-        const input1Container = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.ref)();
-        const input2 = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.ref)();
-        const input2Container = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.ref)();
-        const input_ = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.ref)();
-        const bar = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.ref)();
+        const input1 = (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.ref)();
+        const input1Container = (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.ref)();
+        const input2 = (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.ref)();
+        const input2Container = (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.ref)();
+        const input_ = (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.ref)();
+        const bar = (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.ref)();
         const resizeObservers = {};
-        const state = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.reactive)({
+        const state = (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.reactive)({
             input1Width: 0,
             input2Width: 0,
             dashInput: 80,
@@ -493,8 +475,8 @@ const __default__ = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.defineCompo
             changingByKey: false
         });
         const anchorWidth = 15;
-        (0,external_commonjs_vue_commonjs2_vue_root_Vue_.onMounted)(() => {
-            const instance = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.getCurrentInstance)();
+        (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.onMounted)(() => {
+            const instance = (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.getCurrentInstance)();
             if (getStyle(instance?.proxy?.$el, 'direction') === 'rtl') {
                 state.isRtl = true;
             }
@@ -506,7 +488,7 @@ const __default__ = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.defineCompo
                 state.width = bar.value.getBoundingClientRect()?.width - (isRange.value ? anchorWidth : 0);
             }
         });
-        (0,external_commonjs_vue_commonjs2_vue_root_Vue_.onUnmounted)(() => {
+        (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.onUnmounted)(() => {
             resizeObservers?.ro3?.disconnect();
         });
         const updateAnchor2Value = ($position) => {
@@ -517,10 +499,10 @@ const __default__ = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.defineCompo
             anchor1Value.value = positionToValue($position);
         };
         //const setAnchor1Position = debounce(setAnchor1PositionUD, 10);
-        const scale = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.computed)(() => {
+        const scale = (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.computed)(() => {
             return state.width / (props.max - props.min);
         });
-        const anchor2Position = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.computed)({
+        const anchor2Position = (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.computed)({
             get: () => {
                 return state.anchor2PositionV;
             },
@@ -533,7 +515,7 @@ const __default__ = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.defineCompo
                 updateAnchor2Value($position);
             }
         });
-        const anchor1Position = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.computed)({
+        const anchor1Position = (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.computed)({
             get: () => {
                 return state.anchor1PositionV;
             },
@@ -546,10 +528,10 @@ const __default__ = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.defineCompo
                 updateAnchor1Value($position);
             }
         });
-        const isRange = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.computed)(() => {
+        const isRange = (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.computed)(() => {
             return Array.isArray(iValue.value);
         });
-        const anchor1Value = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.computed)({
+        const anchor1Value = (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.computed)({
             get: () => {
                 if (isRange.value && Array.isArray(iValue.value)) {
                     return iValue.value[0];
@@ -574,7 +556,7 @@ const __default__ = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.defineCompo
                 }
             }
         });
-        const anchor2Value = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.computed)({
+        const anchor2Value = (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.computed)({
             get: () => {
                 if (isRange.value && Array.isArray(iValue.value)) {
                     return iValue.value[1];
@@ -599,7 +581,7 @@ const __default__ = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.defineCompo
                 }
             }
         });
-        const iValue = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.computed)({
+        const iValue = (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.computed)({
             get: () => {
                 if (isVue2)
                     return props.value;
@@ -620,7 +602,7 @@ const __default__ = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.defineCompo
                     emit('update:model-value', value);
             }
         });
-        (0,external_commonjs_vue_commonjs2_vue_root_Vue_.watch)(() => input1Container.value, (v) => {
+        (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.watch)(() => input1Container.value, (v) => {
             if (resizeObservers.ro1) {
                 resizeObservers.ro1.disconnect();
             }
@@ -630,7 +612,7 @@ const __default__ = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.defineCompo
             if (v)
                 resizeObservers.ro1.observe(v);
         }, { immediate: true });
-        (0,external_commonjs_vue_commonjs2_vue_root_Vue_.watch)(() => input2Container.value, (v) => {
+        (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.watch)(() => input2Container.value, (v) => {
             if (resizeObservers.ro2) {
                 resizeObservers.ro2.disconnect();
             }
@@ -640,12 +622,12 @@ const __default__ = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.defineCompo
             if (v)
                 resizeObservers.ro2.observe(v);
         }, { immediate: true });
-        (0,external_commonjs_vue_commonjs2_vue_root_Vue_.watch)(() => input_.value, (v) => {
+        (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.watch)(() => input_.value, (v) => {
             state.dashInput = v?.getBoundingClientRect()?.width || 30;
         }, {
             immediate: true
         });
-        (0,external_commonjs_vue_commonjs2_vue_root_Vue_.watch)(() => iValue.value, (current, prev) => {
+        (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.watch)(() => iValue.value, (current, prev) => {
             if (state.isDragging)
                 return;
             if (Array.isArray(current)) {
@@ -673,11 +655,11 @@ const __default__ = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.defineCompo
             }, 100);
         };
         const input2Keydown = debounce(input2KeydownUD, 1000);
-        const isPopoverMerged = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.computed)(() => {
+        const isPopoverMerged = (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.computed)(() => {
             return (anchor2Position.value - anchor1Position.value < state.input1Width + state.input2Width - 15 &&
                 isRange.value);
         });
-        (0,external_commonjs_vue_commonjs2_vue_root_Vue_.watch)(() => isPopoverMerged.value, () => {
+        (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.watch)(() => isPopoverMerged.value, () => {
             if (input1.value instanceof HTMLInputElement && document.activeElement === input1.value) {
                 const position = input1.value.selectionStart;
                 if (input1.value instanceof HTMLInputElement) {
@@ -693,7 +675,7 @@ const __default__ = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.defineCompo
                 }
             }
         });
-        const barStyle = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.computed)(() => {
+        const barStyle = (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.computed)(() => {
             return {
                 transform: 'translateX(' +
                     (state.isRtl ? state.width - anchor2Position.value : anchor1Position.value) +
@@ -702,7 +684,7 @@ const __default__ = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.defineCompo
                 background: props.activeBarColor
             };
         });
-        const anchor1Style = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.computed)(() => {
+        const anchor1Style = (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.computed)(() => {
             return {
                 transform: 'translateX(' +
                     (state.isRtl
@@ -711,14 +693,14 @@ const __default__ = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.defineCompo
                     'px)'
             };
         });
-        const anchor2Style = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.computed)(() => {
+        const anchor2Style = (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.computed)(() => {
             return {
                 transform: 'translateX(' +
                     (state.isRtl ? state.width - state.anchor2PositionV - 7.5 : state.anchor2PositionV + 7.5) +
                     'px)'
             };
         });
-        const mergedPopoverStyle = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.computed)(() => {
+        const mergedPopoverStyle = (0,external_commonjs_vue_commonjs2_vue_root_Vue_namespaceObject.computed)(() => {
             let translateX = ((state.isRtl
                 ? state.width - anchor2Position.value - anchorWidth / 2
                 : anchor2Position.value - anchorWidth / 2) +
@@ -838,7 +820,7 @@ const __default__ = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.defineCompo
 
 ;// CONCATENATED MODULE: ../components/simpleRangeSlider.vue?vue&type=script&lang=ts&setup=true&
  /* harmony default export */ var components_simpleRangeSlidervue_type_script_lang_ts_setup_true_ = (simpleRangeSlidervue_type_script_lang_ts_setup_true_); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-70.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-70.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-70.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-70.use[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components/simpleRangeSlider.vue?vue&type=style&index=0&id=03a2d9fb&prod&scoped=true&lang=sass&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-27.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-27.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-27.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-27.use[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components/simpleRangeSlider.vue?vue&type=style&index=0&id=03a2d9fb&prod&scoped=true&lang=sass&
 // extracted by mini-css-extract-plugin
 
 ;// CONCATENATED MODULE: ../components/simpleRangeSlider.vue?vue&type=style&index=0&id=03a2d9fb&prod&scoped=true&lang=sass&
@@ -976,8 +958,7 @@ external_commonjs_vue_commonjs2_vue_root_Vue_default().component('vueSimpleRange
 
 
 }();
-/******/ 	return __webpack_exports__;
+module.exports = __webpack_exports__;
 /******/ })()
 ;
-});
-//# sourceMappingURL=index.umd.js.map
+//# sourceMappingURL=index.common.js.map
