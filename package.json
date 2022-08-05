@@ -1,63 +1,90 @@
 {
-  "name": "vue-simple-range-slider",
-  "description": "Change Your numeric value or numeric range value with dragging handles",
-  "version": "0.1.10",
-  "private": false,
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/mohamadkhani/vue-simple-range-slider"
-  },
-  "keywords": [
-    "vue",
-    "range-slider",
-    "numeric-picker",
-    "range-picker",
-    "numeric-range-picker",
-    "numeric-range",
-    "input-element",
-    "range-input"
-  ],
-  "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "build-bundle": "vue-cli-service build --target lib --name vueSimpleRangeSlider ./src/lib.ts",
-    "test:unit": "vue-cli-service test:unit",
-    "test:e2e": "vue-cli-service test:e2e",
-    "lint": "vue-cli-service lint"
-  },
-  "devDependencies": {
-    "@types/chai": "^4.2.8",
-    "@types/mocha": "^5.2.4",
-    "@typescript-eslint/eslint-plugin": "^2.18.0",
-    "@typescript-eslint/parser": "^2.18.0",
-    "@vue/cli-plugin-babel": "~4.2.3",
-    "@vue/cli-plugin-e2e-cypress": "~4.2.0",
-    "@vue/cli-plugin-eslint": "~4.2.0",
-    "@vue/cli-plugin-typescript": "~4.2.0",
-    "@vue/cli-plugin-unit-mocha": "~4.2.0",
-    "@vue/cli-service": "~4.2.0",
-    "@vue/eslint-config-typescript": "^5.0.1",
-    "@vue/test-utils": "1.0.0-beta.31",
-    "chai": "^4.1.2",
-    "core-js": "^3.6.4",
-    "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^6.1.2",
-    "sass": "^1.25.0",
-    "sass-loader": "^8.0.2",
-    "typescript": "~3.7.5",
-    "vue": "^2.6.11",
-    "vue-class-component": "^7.2.2",
-    "vue-input-autowidth": "^1.0.10",
-    "vue-property-decorator": "^8.3.0",
-    "vue-template-compiler": "^2.6.11"
-  },
-  "main": "dist/vueSimpleRangeSlider.common.js",
-  "files": [
-    "dist/*",
-    "src/*",
-    "public/*",
-    "*.json",
-    "*.js",
-    "LICENSE"
-  ]
+    "name": "vue-simple-range-slider",
+    "description": "Change Your numeric value or numeric range value with dragging handles",
+    "version": "1.0.0",
+    "private": false,
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/mohamadkhani/vue-simple-range-slider"
+    },
+    "keywords": [
+        "vue",
+        "range-slider",
+        "numeric-picker",
+        "range-picker",
+        "numeric-range-picker",
+        "numeric-range",
+        "input-element",
+        "range-input"
+    ],
+    "peerDependencies": {
+        "vue": ">=3.2.0||>=2.7.0"
+    },
+    "scripts": {
+        "dev": "vue-demi-switch 3 vue && vite",
+        "dev:vue2": "vue-demi-switch 2 vue2 && vite -c ./src/vue2/vite.config.ts",
+        "build": "run-s build:vue3 build:vue2",
+        "build:vue3": "run-p build:vite build:types",
+        "build:vite": "vue-demi-switch 3 vue && vite build",
+        "build:types": "vue-tsc ./src/index.ts -d --emitDeclarationOnly --outDir ./dist",
+        "build:vue2": "cd src/vue2 && yarn build",
+        "test": "vue-demi-switch 3 vue && vitest",
+        "test:vue2": "vue-demi-switch 2 vue2 && vitest",
+        "lint": "vue-cli-service lint",
+        "test:2": "vue-demi-switch 2 vue2 && jest",
+        "test:3": "vue-demi-switch 3 && jest"
+    },
+    "devDependencies": {
+        "@types/node": "^18.0.6",
+        "@typescript-eslint/eslint-plugin": "^5.30.7",
+        "@typescript-eslint/parser": "^5.30.7",
+        "@vitejs/plugin-vue": "^3.0.1",
+        "@vitejs/plugin-vue2": "^1.1.2",
+        "@vitest/ui": "^0.18.1",
+        "@vue/compiler-sfc": "^3.2.37",
+        "@vue/composition-api": "^1.7.0",
+        "@vue/eslint-config-typescript": "^11.0.0",
+        "@vue/reactivity": "^3.2.37",
+        "@vue/test-utils": "^2.0.2",
+        "eslint": "^8.20.0",
+        "eslint-plugin-prettier": "^4.2.1",
+        "eslint-plugin-vue": "^9.2.0",
+        "jsdom": "^20.0.0",
+        "npm-run-all": "^4.1.5",
+        "prettier": "^2.7.1",
+        "sass": "^1.53.0",
+        "ts-jest": "^28.0.7",
+        "typescript": "^4.1.5",
+        "vite": "^3.0.2",
+        "vitest": "^0.18.1",
+        "vue": "^3.2.37",
+        "vue-jest": "^5.0.0-0",
+        "vue-tsc": "^0.39.0",
+        "vue2": "npm:vue@^2.7.7"
+    },
+    "dependencies": {
+        "vue-demi": "^0.13.5"
+    },
+    "main": "./dist/index.umd.js",
+    "exports": {
+        ".": {
+            "import": "./dist/index.es.js",
+            "require": "./dist/index.umd.js"
+        },
+        "./css": "./dist/style.css",
+        "./vue2": {
+            "import": "./dist/vue2/index.common.js",
+            "require": "./dist/vue2/index.umd.min.js"
+        },
+        "./vue2/css": "./dist/vue2/index.css"
+    },
+    "types": "dist",
+    "files": [
+        "dist/*",
+        "src/*",
+        "public/*",
+        "*.json",
+        "*.js",
+        "LICENSE"
+    ]
 }

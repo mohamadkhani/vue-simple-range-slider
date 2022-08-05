@@ -13,6 +13,7 @@
     "allowJs": true,
     "checkJs": false,
     "baseUrl": ".",
+    "types": [],
     "paths": {
       "@/*": [
         "src/*"
@@ -26,11 +27,11 @@
     ]
   },
   "include": [
-    "src/**/*.ts",
-    "src/shims-vue.d.ts",
-    "src/components/*.vue",
+    "main.ts",
+    "index.ts",
+    "shims-vue.d.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
   ]
 }
