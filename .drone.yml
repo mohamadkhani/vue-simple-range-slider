@@ -3,18 +3,6 @@ type: kubernetes
 name: default
 
 steps:
-  - restore-cache:
-    image: drillster/drone-volume-cache
-    restore: true
-    mount:
-      - ./.yarn-cache
-      - ./node_modules
-      - ./yarn.lock
-    volumes:
-      - /tmp/cache:/cache
-    when:
-      branch: master
-      branch: develop
 
   - dependencies:
     image: node
@@ -27,16 +15,7 @@ steps:
       branch: master
       branch: develop
 
-  - rebuild-cache:
-    image: drillster/drone-volume-cache
-    rebuild: true
-    mount:
-      - ./.yarn-cache
-      - ./node_modules
-    volumes:
-      - /tmp/cache:/cache
-    when:
-      branch: develop
+  
 
   - dependencies:
     image: node
