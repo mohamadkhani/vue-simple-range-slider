@@ -5,7 +5,7 @@ name: default
 steps:
 
   - name: dependencies
-    image: node
+    image: node:18-alpine
     commands:
       - node -v
       - yarn --version
@@ -18,7 +18,7 @@ steps:
   
 
   - name: build
-    image: node
+    image: node:18-alpine
     commands:
       - yarn build
     when:
