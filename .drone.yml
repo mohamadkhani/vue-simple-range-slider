@@ -1,4 +1,6 @@
 pipeline:
+  type: kubernetes
+  
   restore-cache:
     image: drillster/drone-volume-cache
     restore: true
