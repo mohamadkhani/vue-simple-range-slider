@@ -1,6 +1,8 @@
-pipeline:
-  type: kubernetes
-  
+kind: pipeline
+type: kubernetes
+name: default
+
+steps:
   restore-cache:
     image: drillster/drone-volume-cache
     restore: true
