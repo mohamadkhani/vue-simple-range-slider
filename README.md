@@ -86,6 +86,7 @@ import "vue-simple-range-slider/vue2/css";
 |active-bar-color   |```string```                         |```#6699ff```|
 |keep-just-significant-figures   |```boolean```                         |```true```|
 |significant-figures   |```number```                         |```2```|
+|popover-content-editable   |```boolean```                         |```true```|
 
 ### Events
 |Name             |Type|
