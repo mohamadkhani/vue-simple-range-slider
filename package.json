@@ -1,7 +1,7 @@
 {
     "name": "vue-simple-range-slider",
     "description": "Change Your numeric value or numeric range value with dragging handles",
-    "version": "0.1.10",
+    "version": "1.0.0",
     "private": false,
     "repository": {
         "type": "git",
@@ -58,10 +58,12 @@
         "vite": "^3.0.2",
         "vitest": "^0.18.1",
         "vue": "^3.2.37",
-        "vue-demi": "^0.13.5",
         "vue-jest": "^5.0.0-0",
         "vue-tsc": "^0.39.0",
         "vue2": "npm:vue@^2.7.7"
+    },
+    "dependencies": {
+        "vue-demi": "^0.13.5"
     },
     "main": "./dist/index.umd.js",
     "exports": {

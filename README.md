@@ -1,12 +1,12 @@
 # vue-simple-range-slider
 Change your numeric value or numeric range value with dragging handles
 
-[Demo]()
-
+[Demo](https://stackblitz.com/edit/vue-simple-range-slider-example?embed=1&file=src/App.vue&view=preview)
 
 ## Features
 
 * Single value and range slider support
+* Vue3 and Vue2 supports
 * Exponential and linear scale support
 * Keyboard support
 * rtl support
@@ -30,7 +30,7 @@ yarn add vue-simple-range-slider
       style="width: 300px"
       :min="0"
       :max="1000000"
-      :exponential="true"
+      exponential
       v-model="state.range"
     >
       <template #prefix="{ value }">$</template>

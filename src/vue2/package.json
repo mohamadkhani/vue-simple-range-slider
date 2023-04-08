@@ -8,9 +8,11 @@
         "@vue/cli-plugin-typescript": "^5.0.8",
         "@vue/cli-service": "^5.0.8",
         "vue": "2.7.7",
-        "vue-demi": "^0.13.5",
         "vue-template-compiler": "^2.7.8",
         "sass-loader": "^13.0.2"
+    },
+    "dependencies": {
+        "vue-demi": "^0.13.5"
     },
     "scripts": {
         "build": "NODE_ENV=ISVUE2 vue-demi-switch 2 vue2 && vue-cli-service build --target lib --name index  --dest ../../dist/vue2 ./lib.ts"

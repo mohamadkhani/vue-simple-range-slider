@@ -7,7 +7,7 @@
             :exponential="true"
             v-model="state.value1"
             active-bar-color="red"
-            :significant-figures="6"
+            :significant-figures="2"
             bar-color="blue"
         >
             <template #suffix> ریال </template>

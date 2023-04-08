@@ -217,11 +217,11 @@ if (typeof window !== 'undefined') {
 // EXTERNAL MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__(203);
 var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpack_require__.n(external_commonjs_vue_commonjs2_vue_root_Vue_);
-;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components/simpleRangeSlider.vue?vue&type=template&id=7df46a83&scoped=true&
-var render = function render(){var _vm=this,_c=_vm._self._c,_setup=_vm._self._setupProxy;return _c('div',{ref:"root",staticClass:"simple-range-slider"},[_c('div',{ref:"bar",staticClass:"simple-range-slider-bg-bar",style:({ background: _vm.barColor })},[(_setup.isRange)?_c('div',{staticClass:"simple-range-slider-bar",style:(_setup.barStyle)}):_vm._e(),(_setup.isPopoverMerged)?_c('div',{staticClass:"simple-range-slider-popover simple-range-slider-merged-popover",staticStyle:{"right":"unset"},style:(_setup.mergedPopoverStyle)},[_c('div',{ref:"input1Container",staticClass:"simple-range-slider-input-container"},[_vm._t("prefix",null,{"value":_setup.anchor1Value}),_c('div',{ref:"input1",staticClass:"input1",staticStyle:{"display":"inline-block"},attrs:{"contenteditable":"true"},domProps:{"innerHTML":_vm._s(_setup.anchor1Value?.toLocaleString('en-US'))},on:{"keydown":_setup.input1Keydown}}),_vm._t("suffix",null,{"value":_setup.anchor1Value})],2),_c('label',[_c('div',{ref:"input_",staticStyle:{"display":"inline-block","padding":"0 3px"}},[(_vm.$slots.splitter)?_vm._t("splitter"):[_vm._v("|")]],2)]),_c('div',{ref:"input2Container",staticClass:"simple-range-slider-input-container"},[_vm._t("prefix",null,{"value":_setup.anchor2Value}),_c('div',{ref:"input2",staticClass:"input2",staticStyle:{"display":"inline-block"},attrs:{"contenteditable":"true"},on:{"keydown":_setup.input2Keydown}},[_vm._v(" "+_vm._s(_setup.anchor2Value?.toLocaleString('en-US'))+" ")]),_vm._t("suffix",null,{"value":_setup.anchor2Value})],2)]):_vm._e(),_c('div',{staticClass:"simple-range-slider-anchor",style:(_setup.anchor1Style)},[_c('div',{staticClass:"simple-range-slider-handle",attrs:{"tabindex":"1"},on:{"mousedown":function($event){$event.preventDefault();$event.stopPropagation();return _setup.mouseDown(1, $event)},"keydown":function($event){return _setup.keyDown(1, $event)}}}),(!_setup.isPopoverMerged)?_c('div',{staticClass:"simple-range-slider-popover simple-range-slider-popover-left",style:({
+;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components/simpleRangeSlider.vue?vue&type=template&id=2485bbe8&scoped=true&
+var render = function render(){var _vm=this,_c=_vm._self._c,_setup=_vm._self._setupProxy;return _c('div',{ref:"root",staticClass:"simple-range-slider"},[_c('div',{ref:"bar",staticClass:"simple-range-slider-bg-bar",style:({ background: _vm.barColor })},[(_setup.isRange)?_c('div',{staticClass:"simple-range-slider-bar",style:(_setup.barStyle)}):_vm._e(),(_setup.isPopoverMerged)?_c('div',{staticClass:"simple-range-slider-popover simple-range-slider-merged-popover",staticStyle:{"right":"unset"},style:(_setup.mergedPopoverStyle)},[_c('div',{ref:"input1Container",staticClass:"simple-range-slider-input-container"},[_vm._t("prefix",null,{"value":_setup.anchor1Value}),_c('div',{ref:"input1",staticClass:"input1",staticStyle:{"display":"inline-block"},attrs:{"contenteditable":"true"},domProps:{"innerHTML":_vm._s(_setup.anchor1Value?.toLocaleString('en-US'))},on:{"keydown":_setup.input1Keydown}}),_vm._t("suffix",null,{"value":_setup.anchor1Value})],2),_c('label',[_c('div',{ref:"input_",staticStyle:{"display":"inline-block","padding":"0 3px"}},[(_vm.$slots.splitter)?_vm._t("splitter"):[_vm._v("|")]],2)]),_c('div',{ref:"input2Container",staticClass:"simple-range-slider-input-container"},[_vm._t("prefix",null,{"value":_setup.anchor2Value}),_c('div',{ref:"input2",staticClass:"input2",staticStyle:{"display":"inline-block"},attrs:{"contenteditable":"true"},on:{"keydown":_setup.input2Keydown}},[_vm._v(" "+_vm._s(_setup.anchor2Value?.toLocaleString('en-US'))+" ")]),_vm._t("suffix",null,{"value":_setup.anchor2Value})],2)]):_vm._e(),_c('div',{staticClass:"simple-range-slider-anchor",style:(_setup.anchor1Style)},[_c('div',{staticClass:"simple-range-slider-handle",attrs:{"tabindex":"1"},on:{"mousedown":function($event){$event.stopPropagation();return _setup.mouseDown(1, $event)},"keydown":function($event){$event.stopPropagation();return _setup.keyDown(1, $event)}}}),(!_setup.isPopoverMerged)?_c('div',{staticClass:"simple-range-slider-popover simple-range-slider-popover-left",style:({
                     right: _setup.state.isRtl ? '0 !important' : '',
                     left: _setup.state.isRtl ? 'unset' : ''
-                })},[_c('div',{ref:"input1Container",staticClass:"simple-range-slider-input-container"},[_vm._t("prefix",null,{"value":_setup.input1Keydown}),_c('div',{ref:"input1",staticClass:"input1",staticStyle:{"display":"inline-block"},attrs:{"contenteditable":"true"},on:{"keydown":_setup.input1Keydown}},[_vm._v(" "+_vm._s(_setup.anchor1Value?.toLocaleString('en-US'))+" ")]),_vm._t("suffix",null,{"value":_setup.input1Keydown})],2)]):_vm._e(),_c('div',{staticClass:"simple-range-slider-popover-arrow"})]),(_setup.isRange)?_c('div',{staticClass:"simple-range-slider-anchor",style:(_setup.anchor2Style)},[_c('div',{staticClass:"simple-range-slider-handle",attrs:{"tabindex":"1"},on:{"mousedown":function($event){$event.preventDefault();$event.stopPropagation();return _setup.mouseDown(2, $event)},"keydown":function($event){return _setup.keyDown(2, $event)}}}),(!_setup.isPopoverMerged)?_c('div',{staticClass:"simple-range-slider-popover simple-range-slider-popover-right",style:({
+                })},[_c('div',{ref:"input1Container",staticClass:"simple-range-slider-input-container"},[_vm._t("prefix",null,{"value":_setup.input1Keydown}),_c('div',{ref:"input1",staticClass:"input1",staticStyle:{"display":"inline-block"},attrs:{"contenteditable":"true"},on:{"keydown":_setup.input1Keydown}},[_vm._v(" "+_vm._s(_setup.anchor1Value?.toLocaleString('en-US'))+" ")]),_vm._t("suffix",null,{"value":_setup.input1Keydown})],2)]):_vm._e(),_c('div',{staticClass:"simple-range-slider-popover-arrow"})]),(_setup.isRange)?_c('div',{staticClass:"simple-range-slider-anchor",style:(_setup.anchor2Style)},[_c('div',{staticClass:"simple-range-slider-handle",attrs:{"tabindex":"1"},on:{"mousedown":function($event){$event.stopPropagation();return _setup.mouseDown(2, $event)},"keydown":function($event){$event.stopPropagation();return _setup.keyDown(2, $event)}}}),(!_setup.isPopoverMerged)?_c('div',{staticClass:"simple-range-slider-popover simple-range-slider-popover-right",style:({
                     left: _setup.state.isRtl ? '-3px !important' : '',
                     right: _setup.state.isRtl ? 'unset !important' : ''
                 })},[_c('div',{ref:"input2Container",staticClass:"simple-range-slider-input-container"},[_vm._t("prefix",null,{"value":_setup.input2Keydown}),_c('div',{ref:"input2",staticClass:"input2",staticStyle:{"display":"inline-block"},attrs:{"contenteditable":"true"},on:{"keydown":_setup.input2Keydown}},[_vm._v(" "+_vm._s(_setup.anchor2Value?.toLocaleString('en-US'))+" ")]),_vm._t("suffix",null,{"value":_setup.input2Keydown})],2)]):_vm._e(),_c('div',{staticClass:"simple-range-slider-popover-arrow"})]):_vm._e()])])
@@ -429,10 +429,13 @@ const __default__ = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.defineCompo
         const props = __props;
         const positionLimits = ($position, $anchorIndex) => {
             if ($anchorIndex === 2) {
-                $position = Math.min(state.width, Math.max(state.anchor1PositionV, $position));
+                $position = Math.min(state.width, Math.max(valueToPosition(anchor1Value.value !== undefined ? anchor1Value.value : props.min), $position));
             }
             if ($anchorIndex === 1) {
-                $position = Math.max(0, Math.min(isRange.value ? state.anchor2PositionV : state.width, $position));
+                $position = Math.min(isRange.value
+                    ? valueToPosition(anchor2Value.value !== undefined ? anchor2Value.value : props.max)
+                    : state.width, $position);
+                $position = Math.max(0, $position);
             }
             return $position;
         };
@@ -490,7 +493,6 @@ const __default__ = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.defineCompo
             dragStartX: 0,
             dragStartPosition: 0,
             isDragging: false,
-            changingByKey: false
         });
         const anchorWidth = 15;
         (0,external_commonjs_vue_commonjs2_vue_root_Vue_.onMounted)(() => {
@@ -501,7 +503,7 @@ const __default__ = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.defineCompo
                 state.width = o[0].contentRect.width - (isRange.value ? anchorWidth : 0);
             });
             if (bar.value) {
-                resizeObservers.ro3.unobserve(bar.value);
+                resizeObservers.ro3.observe(bar.value);
                 state.width = bar.value.getBoundingClientRect()?.width - (isRange.value ? anchorWidth : 0);
             }
         });
@@ -645,7 +647,11 @@ const __default__ = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.defineCompo
         }, {
             immediate: true
         });
-        (0,external_commonjs_vue_commonjs2_vue_root_Vue_.watch)(() => iValue.value, (current, prev) => {
+        (0,external_commonjs_vue_commonjs2_vue_root_Vue_.watch)(() => ({
+            value: iValue.value,
+            scale: scale.value,
+            exponential: props.exponential
+        }), ({ value: current }) => {
             if (state.isDragging)
                 return;
             if (Array.isArray(current)) {
@@ -663,13 +669,13 @@ const __default__ = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.defineCompo
         }, { immediate: true });
         const input1KeydownUD = ($event) => {
             setTimeout(() => {
-                anchor1Value.value = Number.parseInt(input2.value?.innerText.replace(/,/, '') || '0');
+                anchor1Value.value = Number.parseInt(input1.value?.innerText.replace(/,/g, '') || '0');
             }, 100);
         };
         const input1Keydown = debounce(input1KeydownUD, 1000);
         const input2KeydownUD = ($event) => {
             setTimeout(() => {
-                anchor2Value.value = Number.parseInt(input2.value?.innerText.replace(/,/, '') || '0');
+                anchor2Value.value = Number.parseInt(input2.value?.innerText.replace(/,/g, '') || '0');
             }, 100);
         };
         const input2Keydown = debounce(input2KeydownUD, 1000);
@@ -738,7 +744,8 @@ const __default__ = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.defineCompo
             };
         });
         const mouseDown = ($anchor, $event) => {
-            $event.preventDefault();
+            //$event.preventDefault();
+            //$event.stopPropagation();
             state.isDragging = true;
             state.draggingAnchor = $anchor;
             state.dragStartX = $event.x;
@@ -752,6 +759,9 @@ const __default__ = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.defineCompo
             const win = window;
             win.$SRSMouseMove = ($event) => {
                 $event.preventDefault();
+                $event.stopPropagation();
+                if (!state.isDragging)
+                    return;
                 if ($anchor == 1) {
                     if (state.isRtl) {
                         anchor1Position.value = state.dragStartPosition + state.dragStartX - $event.x;
@@ -769,18 +779,20 @@ const __default__ = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.defineCompo
                     }
                 }
             };
-            const mouseUp = () => {
+            win.mouseUp = ($event) => {
                 state.isDragging = false;
-                document.removeEventListener('mouseup', mouseUp);
+                document.removeEventListener('mouseup', win.mouseUp);
                 document.removeEventListener('mousemove', win.$SRSMouseMove);
+                $event.preventDefault();
+                $event.stopPropagation();
             };
             document.addEventListener('mousemove', win.$SRSMouseMove);
-            document.addEventListener('mouseup', mouseUp);
+            document.addEventListener('mouseup', win.mouseUp);
         };
         const keyDown = ($anchor, $event) => {
-            if (state.changingByKey)
+            if (state.changingByKey === $anchor)
                 return;
-            state.changingByKey = true;
+            state.changingByKey = $anchor;
             let speed = 40;
             let count = 0;
             const change = () => {
@@ -815,7 +827,7 @@ const __default__ = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.defineCompo
             }, 5);
             if ($event.target instanceof HTMLElement) {
                 $event.target.addEventListener('keyup', () => {
-                    state.changingByKey = false;
+                    state.changingByKey = undefined;
                     clearInterval(intervalKey);
                 });
             }
@@ -838,10 +850,10 @@ const __default__ = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.defineCompo
 
 ;// CONCATENATED MODULE: ../components/simpleRangeSlider.vue?vue&type=script&lang=ts&setup=true&
  /* harmony default export */ var components_simpleRangeSlidervue_type_script_lang_ts_setup_true_ = (simpleRangeSlidervue_type_script_lang_ts_setup_true_); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-70.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-70.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-70.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-70.use[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components/simpleRangeSlider.vue?vue&type=style&index=0&id=7df46a83&prod&scoped=true&lang=sass&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-70.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-70.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-70.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-70.use[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!../components/simpleRangeSlider.vue?vue&type=style&index=0&id=2485bbe8&prod&scoped=true&lang=sass&
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ../components/simpleRangeSlider.vue?vue&type=style&index=0&id=7df46a83&prod&scoped=true&lang=sass&
+;// CONCATENATED MODULE: ../components/simpleRangeSlider.vue?vue&type=style&index=0&id=2485bbe8&prod&scoped=true&lang=sass&
 
 ;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/runtime/componentNormalizer.js
 /* globals __VUE_SSR_CONTEXT__ */
@@ -956,7 +968,7 @@ var component = normalizeComponent(
   staticRenderFns,
   false,
   null,
-  "7df46a83",
+  "2485bbe8",
   null
   
 )

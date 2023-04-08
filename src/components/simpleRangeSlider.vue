@@ -45,8 +45,8 @@
             <div class="simple-range-slider-anchor" :style="anchor1Style">
                 <div
                     tabindex="1"
-                    @mousedown.prevent.stop="mouseDown(1, $event)"
-                    @keydown="keyDown(1, $event)"
+                    @mousedown.stop="mouseDown(1, $event)"
+                    @keydown.stop="keyDown(1, $event)"
                     class="simple-range-slider-handle"
                 />
                 <div
@@ -77,8 +77,8 @@
             <div v-if="isRange" class="simple-range-slider-anchor" :style="anchor2Style">
                 <div
                     tabindex="1"
-                    @mousedown.prevent.stop="mouseDown(2, $event)"
-                    @keydown="keyDown(2, $event)"
+                    @mousedown.stop="mouseDown(2, $event)"
+                    @keydown.stop="keyDown(2, $event)"
                     class="simple-range-slider-handle"
                 />
                 <div
@@ -111,27 +111,25 @@
 </template>
 
 <script lang="ts" setup>
-import {
-    getCurrentInstance,
-    onMounted,
-    computed,
-    ref,
-    watch,
-    CSSProperties,
-    reactive,
-    onUnmounted,
-    defineComponent
-} from 'vue';
+import { onMounted, computed, ref, watch, CSSProperties, reactive, onUnmounted, defineComponent } from 'vue';
 import { isVue2 } from 'vue-demi';
 import { debounce } from '../utils.js';
 
 const positionLimits = ($position: number, $anchorIndex: number) => {
     if ($anchorIndex === 2) {
-        $position = Math.min(state.width, Math.max(state.anchor1PositionV, $position));
+        $position = Math.min(
+            state.width,
+            Math.max(
+                valueToPosition(anchor1Value.value !== undefined ? anchor1Value.value : props.min),
+                $position
+            )
+        );
     }
     if ($anchorIndex === 1) {
         $position = Math.min(
-            isRange.value ? valueToPosition(anchor1Value.value || props.min) : state.width,
+            isRange.value
+                ? valueToPosition(anchor2Value.value !== undefined ? anchor2Value.value : props.max)
+                : state.width,
             $position
         );
         $position = Math.max(0, $position);
@@ -224,7 +222,7 @@ const state = reactive<{
     dragStartX: number;
     dragStartPosition: number;
     isDragging: boolean;
-    changingByKey: boolean;
+    changingByKey?: number;
 }>({
     input1Width: 0,
     input2Width: 0,
@@ -237,7 +235,6 @@ const state = reactive<{
     dragStartX: 0,
     dragStartPosition: 0,
     isDragging: false,
-    changingByKey: false
 });
 const anchorWidth = 15;
 
@@ -249,7 +246,7 @@ onMounted(() => {
         state.width = o[0].contentRect.width - (isRange.value ? anchorWidth : 0);
     });
     if (bar.value) {
-        resizeObservers.ro3.unobserve(bar.value);
+        resizeObservers.ro3.observe(bar.value);
         state.width = bar.value.getBoundingClientRect()?.width - (isRange.value ? anchorWidth : 0);
     }
 });
@@ -404,8 +401,12 @@ watch(
 );
 
 watch(
-    () => iValue.value,
-    (current, prev) => {
+    () => ({
+        value: iValue.value,
+        scale: scale.value,
+        exponential: props.exponential
+    }),
+    ({ value: current }) => {
         if (state.isDragging) return;
         if (Array.isArray(current)) {
             anchor1Position.value = valueToPosition(current[0]);
@@ -423,13 +424,13 @@ watch(
 
 const input1KeydownUD = ($event: KeyboardEvent) => {
     setTimeout(() => {
-        anchor1Value.value = Number.parseInt(input2.value?.innerText.replace(/,/, '') || '0');
+        anchor1Value.value = Number.parseInt(input1.value?.innerText.replace(/,/g, '') || '0');
     }, 100);
 };
 const input1Keydown = debounce(input1KeydownUD, 1000);
 const input2KeydownUD = ($event: KeyboardEvent) => {
     setTimeout(() => {
-        anchor2Value.value = Number.parseInt(input2.value?.innerText.replace(/,/, '') || '0');
+        anchor2Value.value = Number.parseInt(input2.value?.innerText.replace(/,/g, '') || '0');
     }, 100);
 };
 const input2Keydown = debounce(input2KeydownUD, 1000);
@@ -517,7 +518,8 @@ const mergedPopoverStyle = computed<CSSProperties>(() => {
 });
 
 const mouseDown = ($anchor: number, $event: MouseEvent) => {
-    $event.preventDefault();
+    //$event.preventDefault();
+    //$event.stopPropagation();
     state.isDragging = true;
     state.draggingAnchor = $anchor;
     state.dragStartX = $event.x;
@@ -532,6 +534,8 @@ const mouseDown = ($anchor: number, $event: MouseEvent) => {
 
     win.$SRSMouseMove = ($event: MouseEvent) => {
         $event.preventDefault();
+        $event.stopPropagation();
+        if (!state.isDragging) return;
         if ($anchor == 1) {
             if (state.isRtl) {
                 anchor1Position.value = state.dragStartPosition + state.dragStartX - $event.x;
@@ -547,18 +551,20 @@ const mouseDown = ($anchor: number, $event: MouseEvent) => {
         }
     };
 
-    const mouseUp = () => {
+    win.mouseUp = ($event: MouseEvent) => {
         state.isDragging = false;
-        document.removeEventListener('mouseup', mouseUp);
+        document.removeEventListener('mouseup', win.mouseUp);
         document.removeEventListener('mousemove', win.$SRSMouseMove);
+        $event.preventDefault();
+        $event.stopPropagation();
     };
     document.addEventListener('mousemove', win.$SRSMouseMove);
-    document.addEventListener('mouseup', mouseUp);
+    document.addEventListener('mouseup', win.mouseUp);
 };
 
 const keyDown = ($anchor: number, $event: KeyboardEvent) => {
-    if (state.changingByKey) return;
-    state.changingByKey = true;
+    if (state.changingByKey === $anchor) return;
+    state.changingByKey = $anchor;
     let speed = 40;
     let count = 0;
     const change = () => {
@@ -595,7 +601,7 @@ const keyDown = ($anchor: number, $event: KeyboardEvent) => {
     }, 5);
     if ($event.target instanceof HTMLElement) {
         $event.target.addEventListener('keyup', () => {
-            state.changingByKey = false;
+            state.changingByKey = undefined;
             clearInterval(intervalKey);
         });
     }
