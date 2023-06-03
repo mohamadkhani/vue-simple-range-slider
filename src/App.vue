@@ -31,6 +31,19 @@
             :max="40"
             v-model="state.value4"
         />
+        <p style="text-align: left; margin: 20px 0">Without editable popover:</p>
+        <VueSimpleRangeSlider
+            style="width: 500px"
+            :min="10"
+            :max="1000000000"
+            :exponential="true"
+            v-model="state.value5"
+            active-bar-color="#20c997"
+            :significant-figures="2"
+            bar-color="#f1f1f1"
+            :popoverContentEditable="false"
+        >
+        </VueSimpleRangeSlider>
     </div>
 </template>
 
@@ -45,11 +58,13 @@ export default defineComponent({
             value3: [number, number];
             value2: number;
             value4: number;
+            value5: [number, number];
         }>({
             value1: [10, 1000],
             value3: [10, 30],
             value2: 3,
-            value4: 3
+            value4: 3,
+            value5: [10, 1000]
         });
         return { state };
     }

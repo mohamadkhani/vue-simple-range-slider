@@ -14,7 +14,7 @@
                         ref="input1"
                         class="input1"
                         style="display: inline-block"
-                        contenteditable="true"
+                        :contenteditable="popoverContentEditable"
                         v-html="anchor1Value?.toLocaleString('en-US')"
                         @keydown="input1Keydown"
                     />
@@ -33,7 +33,7 @@
                         ref="input2"
                         class="input2"
                         style="display: inline-block"
-                        contenteditable="true"
+                        :contenteditable="popoverContentEditable"
                         @keydown="input2Keydown"
                     >
                         {{ anchor2Value?.toLocaleString('en-US') }}
@@ -62,7 +62,7 @@
                         <div
                             ref="input1"
                             class="input1"
-                            contenteditable="true"
+                            :contenteditable="popoverContentEditable"
                             style="display: inline-block"
                             @keydown="input1Keydown"
                         >
@@ -94,7 +94,7 @@
                         <div
                             ref="input2"
                             class="input2"
-                            contenteditable="true"
+                            :contenteditable="popoverContentEditable"
                             style="display: inline-block"
                             @keydown="input2Keydown"
                         >
@@ -185,6 +185,7 @@ const props = withDefaults(
         min?: number;
         keepJustSignificantFigures?: boolean;
         significantFigures?: number;
+        popoverContentEditable?: boolean;
     }>(),
     {
         min: 0,
@@ -193,7 +194,8 @@ const props = withDefaults(
         activeBarColor: '#7e7e7e',
         barColor: '#bebebe',
         keepJustSignificantFigures: true,
-        significantFigures: 2
+        significantFigures: 2,
+        popoverContentEditable: true
     }
 );
 const emit = defineEmits<{
@@ -424,13 +426,23 @@ watch(
 
 const input1KeydownUD = ($event: KeyboardEvent) => {
     setTimeout(() => {
-        anchor1Value.value = Number.parseInt(input1.value?.innerText.replace(/,/g, '') || '0');
+        if (!props.popoverContentEditable) {
+            if (!input1.value) return;
+            input1.value.innerText = String(anchor1Value.value);
+        } else {
+            anchor1Value.value = Number.parseInt(input1.value?.innerText.replace(/,/g, '') || '0');
+        }
     }, 100);
 };
 const input1Keydown = debounce(input1KeydownUD, 1000);
 const input2KeydownUD = ($event: KeyboardEvent) => {
     setTimeout(() => {
-        anchor2Value.value = Number.parseInt(input2.value?.innerText.replace(/,/g, '') || '0');
+        if (!props.popoverContentEditable) {
+            if (!input2.value) return;
+            input2.value.innerText = String(anchor2Value.value);
+        } else {
+            anchor2Value.value = Number.parseInt(input2.value?.innerText.replace(/,/g, '') || '0');
+        }
     }, 100);
 };
 const input2Keydown = debounce(input2KeydownUD, 1000);
